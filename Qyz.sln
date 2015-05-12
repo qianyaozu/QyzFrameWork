@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Communication", "Qyz.FrameWork.Communication\Qyz.FrameWork.Communication.csproj", "{9CA9C54D-D001-48A6-9FE6-D07F9741C243}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core.Type", "Qyz.FrameWork.Core.Type\Qyz.FrameWork.Core.Type.csproj", "{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core", "Qyz.FrameWork.Core\Qyz.FrameWork.Core.csproj", "{2B204273-C192-4341-A6F4-258E47FC881A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{34F3D160-D245-4BE4-A862-945C34B0295B}"
@@ -22,8 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{C5FCCC88-088E-497F-B3D1-7D51809DF9BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.Model.Assets", "Qyz.Model.Assets\Qyz.Model.Assets.csproj", "{77842469-611B-4A54-BEF5-2E036565DF77}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Themes", "Qyz.UI.Themes\Qyz.UI.Themes.csproj", "{6D5130E4-ECB5-446A-8078-36E0272B102B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Base", "Qyz.UI.Base\Qyz.UI.Base.csproj", "{B809E482-7CB9-40DC-AF93-57A7AFCE6918}"
 EndProject
@@ -41,20 +35,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems", "Systems", "{9D78
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{867943AD-F2E1-4AE4-B361-95E330A7E225}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Themes", "Qyz.UI.Themes\Qyz.UI.Themes.csproj", "{6D5130E4-ECB5-446A-8078-36E0272B102B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Communication", "Qyz.FrameWork.Communication\Qyz.FrameWork.Communication.csproj", "{9CA9C54D-D001-48A6-9FE6-D07F9741C243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core.Type", "Qyz.FrameWork.Core.Type\Qyz.FrameWork.Core.Type.csproj", "{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B204273-C192-4341-A6F4-258E47FC881A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B204273-C192-4341-A6F4-258E47FC881A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B204273-C192-4341-A6F4-258E47FC881A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,10 +55,6 @@ Global
 		{77842469-611B-4A54-BEF5-2E036565DF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77842469-611B-4A54-BEF5-2E036565DF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77842469-611B-4A54-BEF5-2E036565DF77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B809E482-7CB9-40DC-AF93-57A7AFCE6918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B809E482-7CB9-40DC-AF93-57A7AFCE6918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B809E482-7CB9-40DC-AF93-57A7AFCE6918}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,13 +71,25 @@ Global
 		{756D0D66-ADAA-40D3-86F9-6E241CD87B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{756D0D66-ADAA-40D3-86F9-6E241CD87B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{756D0D66-ADAA-40D3-86F9-6E241CD87B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5130E4-ECB5-446A-8078-36E0272B102B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9CA9C54D-D001-48A6-9FE6-D07F9741C243} = {34F3D160-D245-4BE4-A862-945C34B0295B}
 		{2B204273-C192-4341-A6F4-258E47FC881A} = {34F3D160-D245-4BE4-A862-945C34B0295B}
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243} = {34F3D160-D245-4BE4-A862-945C34B0295B}
 		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA} = {34F3D160-D245-4BE4-A862-945C34B0295B}
 		{7E5C67CA-9660-4E2B-969D-F0D093E6A1F6} = {1FF96C34-FAE8-4FF3-B39B-2018328FA8FA}
 		{E0800736-F929-4D51-82BC-AC3FCFDF621E} = {1FF96C34-FAE8-4FF3-B39B-2018328FA8FA}
