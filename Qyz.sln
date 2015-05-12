@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core", "..\Qyz.FrameWork.Core\Qyz.FrameWork.Core.csproj", "{2B204273-C192-4341-A6F4-258E47FC881A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Communication", "Qyz.FrameWork.Communication\Qyz.FrameWork.Communication.csproj", "{9CA9C54D-D001-48A6-9FE6-D07F9741C243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core.Type", "Qyz.FrameWork.Core.Type\Qyz.FrameWork.Core.Type.csproj", "{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2B204273-C192-4341-A6F4-258E47FC881A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B204273-C192-4341-A6F4-258E47FC881A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B204273-C192-4341-A6F4-258E47FC881A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA9C54D-D001-48A6-9FE6-D07F9741C243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
