@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core", "Qyz.FrameWork.Core\Qyz.FrameWork.Core.csproj", "{2B204273-C192-4341-A6F4-258E47FC881A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core(核心库)", "Qyz.FrameWork.Core\Qyz.FrameWork.Core(核心库).csproj", "{2B204273-C192-4341-A6F4-258E47FC881A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{34F3D160-D245-4BE4-A862-945C34B0295B}"
 EndProject
@@ -19,11 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{C5FCCC88-088
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.Model.Assets", "Qyz.Model.Assets\Qyz.Model.Assets.csproj", "{77842469-611B-4A54-BEF5-2E036565DF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Base", "Qyz.UI.Base\Qyz.UI.Base.csproj", "{B809E482-7CB9-40DC-AF93-57A7AFCE6918}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Base(控件基类)", "Qyz.UI.Base\Qyz.UI.Base(控件基类).csproj", "{B809E482-7CB9-40DC-AF93-57A7AFCE6918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Controls", "Qyz.UI.Controls\Qyz.UI.Controls.csproj", "{807012D9-E9D7-4CEA-916D-76FC8DFDCB32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Controls(控件集合)", "Qyz.UI.Controls\Qyz.UI.Controls(控件集合).csproj", "{807012D9-E9D7-4CEA-916D-76FC8DFDCB32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.MVVM", "Qyz.UI.MVVM\Qyz.UI.MVVM.csproj", "{756D0D66-ADAA-40D3-86F9-6E241CD87B2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.MVVM(mvvm模式封装)", "Qyz.UI.MVVM\Qyz.UI.MVVM(mvvm模式封装).csproj", "{756D0D66-ADAA-40D3-86F9-6E241CD87B2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{7E5C67CA-9660-4E2B-969D-F0D093E6A1F6}"
 EndProject
@@ -31,13 +31,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems", "Systems", "{9D78
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{867943AD-F2E1-4AE4-B361-95E330A7E225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Themes", "Qyz.UI.Themes\Qyz.UI.Themes.csproj", "{6D5130E4-ECB5-446A-8078-36E0272B102B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Themes(界面主题)", "Qyz.UI.Themes\Qyz.UI.Themes(界面主题).csproj", "{6D5130E4-ECB5-446A-8078-36E0272B102B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Communication", "Qyz.FrameWork.Communication\Qyz.FrameWork.Communication.csproj", "{9CA9C54D-D001-48A6-9FE6-D07F9741C243}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Communication(通讯)", "Qyz.FrameWork.Communication\Qyz.FrameWork.Communication(通讯).csproj", "{9CA9C54D-D001-48A6-9FE6-D07F9741C243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Core.Type", "Qyz.FrameWork.Core.Type\Qyz.FrameWork.Core.Type.csproj", "{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Type(类型和枚举)", "Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type(类型和枚举).csproj", "{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Main", "Qyz.UI.Main\Qyz.UI.Main.csproj", "{5EBF8EB4-20C6-4DED-BF76-1DA2DE57F74E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.UI.Main(主窗体)", "Qyz.UI.Main\Qyz.UI.Main(主窗体).csproj", "{5EBF8EB4-20C6-4DED-BF76-1DA2DE57F74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Utility(实用库)", "Qyz.FrameWork.Utility\Qyz.FrameWork.Utility(实用库).csproj", "{CB91AFDD-21AB-4ECE-80EF-F939B5C157A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qyz.FrameWork.Protocol(协议)", "Qyz.FrameWork.Protocol\Qyz.FrameWork.Protocol(协议).csproj", "{228B7128-E5F3-4A28-ABAC-C913EBD6CE96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{5EBF8EB4-20C6-4DED-BF76-1DA2DE57F74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EBF8EB4-20C6-4DED-BF76-1DA2DE57F74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EBF8EB4-20C6-4DED-BF76-1DA2DE57F74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB91AFDD-21AB-4ECE-80EF-F939B5C157A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB91AFDD-21AB-4ECE-80EF-F939B5C157A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB91AFDD-21AB-4ECE-80EF-F939B5C157A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB91AFDD-21AB-4ECE-80EF-F939B5C157A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{228B7128-E5F3-4A28-ABAC-C913EBD6CE96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{228B7128-E5F3-4A28-ABAC-C913EBD6CE96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{228B7128-E5F3-4A28-ABAC-C913EBD6CE96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{228B7128-E5F3-4A28-ABAC-C913EBD6CE96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +101,8 @@ Global
 		{2B204273-C192-4341-A6F4-258E47FC881A} = {34F3D160-D245-4BE4-A862-945C34B0295B}
 		{9CA9C54D-D001-48A6-9FE6-D07F9741C243} = {34F3D160-D245-4BE4-A862-945C34B0295B}
 		{FB6B5BCB-ACD4-4A04-B5BC-4F7C2FC581DA} = {34F3D160-D245-4BE4-A862-945C34B0295B}
+		{CB91AFDD-21AB-4ECE-80EF-F939B5C157A0} = {34F3D160-D245-4BE4-A862-945C34B0295B}
+		{228B7128-E5F3-4A28-ABAC-C913EBD6CE96} = {34F3D160-D245-4BE4-A862-945C34B0295B}
 		{7E5C67CA-9660-4E2B-969D-F0D093E6A1F6} = {1FF96C34-FAE8-4FF3-B39B-2018328FA8FA}
 		{9D78A426-CC5B-4E8A-AC5D-D70F58446EB9} = {1FF96C34-FAE8-4FF3-B39B-2018328FA8FA}
 		{77842469-611B-4A54-BEF5-2E036565DF77} = {57C981ED-BD21-4353-A23B-F71553394CB3}
