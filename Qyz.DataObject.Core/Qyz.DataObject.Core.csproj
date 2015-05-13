@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B809E482-7CB9-40DC-AF93-57A7AFCE6918}</ProjectGuid>
+    <ProjectGuid>{EB3B421A-7AEC-4B51-AC62-76F044C6AC78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Qyz.UI.Base</RootNamespace>
-    <AssemblyName>Qyz.UI.Base</AssemblyName>
+    <RootNamespace>Qyz.DataObject.Core</RootNamespace>
+    <AssemblyName>Qyz.DataObject.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,27 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DialogBase.cs" />
-    <Compile Include="MdiControl.cs" />
+    <Compile Include="ModuleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Qyz.UI.Themes\Qyz.UI.Themes%28界面主题%29.csproj">
-      <Project>{6d5130e4-ecb5-446a-8078-36e0272b102b}</Project>
-      <Name>Qyz.UI.Themes%28界面主题%29</Name>
+    <ProjectReference Include="..\Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type%28类型和枚举%29.csproj">
+      <Project>{fb6b5bcb-acd4-4a04-b5bc-4f7c2fc581da}</Project>
+      <Name>Qyz.FrameWork.Type%28类型和枚举%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

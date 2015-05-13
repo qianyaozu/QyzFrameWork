@@ -6,6 +6,10 @@ using System.Text;
 
 namespace Qyz.FrameWork.Utility
 {
+    /// <summary>
+    /// 数据集合，增加了 新增项集合，修改项集合，删除项集合
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class BindList<T> : System.ComponentModel.BindingList<T>
     {
         #region 属性

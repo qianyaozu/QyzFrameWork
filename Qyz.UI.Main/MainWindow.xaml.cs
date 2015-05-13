@@ -21,7 +21,20 @@ namespace Qyz.UI.Main
     {
         public MainWindow()
         {
+          
             InitializeComponent();
         }
+
+        #region 窗体事件
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
+
+        private void ThumbSizeChange_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

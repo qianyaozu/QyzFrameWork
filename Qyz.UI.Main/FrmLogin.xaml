@@ -1,0 +1,9 @@
+﻿<base:DialogWindow x:Class="Qyz.UI.Main.FrmLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:base="clr-namespace:Qyz.UI.Base;assembly=Qyz.UI.Base"
+        Title="登录" Width="330" Height="200" WindowStyle="None" AllowsTransparency="True"   WindowStartupLocation="CenterScreen" Background="{x:Null}" >
+    <Grid>
+        
+    </Grid>
+</base:DialogWindow>
