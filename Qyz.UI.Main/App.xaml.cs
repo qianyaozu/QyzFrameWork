@@ -19,10 +19,12 @@ namespace Qyz.UI.Main
             rd.Source = new Uri("pack://application:,,,/Qyz.UI.Themes;component/defaultTheme/defaultImage.xaml", UriKind.RelativeOrAbsolute);
             ResourceDictionary rd1 = new ResourceDictionary();
             rd1.Source = new Uri("pack://application:,,,/Qyz.UI.Themes;component/defaultTheme/defaultControls.xaml", UriKind.RelativeOrAbsolute);
+            ResourceDictionary rd2 = new ResourceDictionary();
+            rd2.Source = new Uri("pack://application:,,,/Qyz.UI.Themes;component/defaultTheme/defaultWindow.xaml", UriKind.RelativeOrAbsolute);
 
             this.Resources.MergedDictionaries.Add(rd);
             this.Resources.MergedDictionaries.Add(rd1);
-
+            this.Resources.MergedDictionaries.Add(rd2);
             FrmLogin login = new FrmLogin();
             login.Show();
         }

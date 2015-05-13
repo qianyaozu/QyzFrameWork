@@ -2,8 +2,24 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:base="clr-namespace:Qyz.UI.Base;assembly=Qyz.UI.Base"
-        Title="登录" Width="330" Height="200" WindowStyle="None" AllowsTransparency="True"   WindowStartupLocation="CenterScreen" Background="{x:Null}" >
+        Title="登录" Width="330" Height="240" WindowStyle="None" AllowsTransparency="True"   WindowStartupLocation="CenterScreen"   >
+     
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="账户：" Style="{DynamicResource DescribeTextBlockStyle}"></TextBlock>
+
+            <TextBox BorderThickness="1" BorderBrush="LightGray"  x:Name="txtUserName" Width="240" Height="20"  MaxLength="20"  Text=""    VerticalAlignment="Top" Background="#FFF3F5F5" AcceptsTab="True" TabIndex="0" />
+
+            <TextBlock Text="密码：" Style="{DynamicResource DescribeTextBlockStyle}" ></TextBlock>
+
+            <PasswordBox x:Name="txtPassWord"  MaxLength="20"   Width="240" BorderThickness="1" BorderBrush="LightGray" Background="#FFF3F5F5"  TabIndex="1"  >
+            </PasswordBox>
+            <TextBlock Text="系统："  Style="{DynamicResource DescribeTextBlockStyle}"></TextBlock>
+            <ComboBox  Width="240" BorderThickness="1" BorderBrush="LightGray"></ComboBox>
+            
+            <TextBlock Text="" Name="message" Margin="0,5,0,0"></TextBlock>
+            <Button Content="登  录"   Margin="0,5,0,0"  Height="30"      HorizontalAlignment="Center" Width="122" />
+
+        </StackPanel>
     </Grid>
 </base:DialogWindow>

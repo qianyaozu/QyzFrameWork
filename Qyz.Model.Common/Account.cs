@@ -23,5 +23,6 @@ namespace Qyz.Model.Common
         public string Phone { get; set; }
         public string Discribtion { get; set; }
         public string Remark { get; set; }
+        public string AccountName { get; set; }
     }
 }

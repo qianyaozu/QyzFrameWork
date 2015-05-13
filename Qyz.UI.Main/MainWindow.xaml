@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Qyz.UI.Main.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:theme="clr-namespace:Qyz.UI.Themes;assembly=Qyz.UI.Themes"
+       
         Width="1000" Height="700" ResizeMode="CanMinimize" MinWidth="1024" x:Name="FirstWindow" MinHeight="768"
         WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#00000000" WindowStyle="None" Foreground="#00000000" BorderBrush="#00000000" SizeChanged="MainWindow_SizeChanged">
 

@@ -4,51 +4,54 @@
                      xmlns:ee="http://schemas.microsoft.com/expression/2010/effects"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="titleTextStyle" TargetType="TextBlock">
+    <Style x:Key="TitleTextStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
-        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-        <Setter Property="Margin" Value="10 0 0 0"></Setter>
+        <Setter Property="Margin" Value="10 5 0 0"></Setter>
     </Style>
-    
-    
-    <Style x:Key="closeBtnStyle" TargetType="Button">
-        <Setter Property="Margin" Value="2,0,2,0"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="Background" Value="Transparent"/>
+    <Style x:Key="DescribeTextBlockStyle" TargetType="TextBlock"> 
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter> 
+        <Setter Property="Margin" Value="0 10 0 0"></Setter>
+    </Style>
+
+
+    <Style x:Key="CloseButtonStyle" TargetType="Button">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Opacity" Value="1"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0,5,5,0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid Margin="-5.167,0,0,-5" Tag="{TemplateBinding Tag}"  >
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="MouseOver"/>
-                                <VisualState x:Name="Pressed"/>
-                                <VisualState x:Name="Disabled"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Ellipse Width="0" Height="0" Fill="#FF5D554F" Opacity=".1" StrokeThickness="2"  Stroke="#FFC27400" HorizontalAlignment="Right" Margin="0,0,-0.5,0" VerticalAlignment="Top"/>
-                        <Ellipse x:Name="borderBtn" Width="11.001" Height="11" StrokeThickness="0" Fill="{TemplateBinding Background}"  Stroke="#FFC27400" HorizontalAlignment="Right" Margin="0,1.085,2.568,0" VerticalAlignment="Top"/>
-
-                        <!--按钮内容-->
-                        <Grid HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0" VerticalAlignment="Stretch">
-                            <Canvas HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-0.9,-0.637,0,0" >
-                                <Line StrokeThickness="1" x:Name="l1" Stroke="{TemplateBinding BorderBrush}" X1="0" Y1="0" X2="7" Y2="7" Canvas.Left="4.25" Canvas.Top="3.75" Width="7.062" Height="7"/>
-                                <Line StrokeThickness="1" x:Name="l2" Stroke="{TemplateBinding BorderBrush}" X1="0" Y1="7" X2="7" Y2="0" Canvas.Left="4.25" Canvas.Top="3.75" Height="7" Width="7.062"/>
-                            </Canvas>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"  CornerRadius="2"  Background="{TemplateBinding Background}"  	BorderThickness="1"  BorderBrush="{TemplateBinding BorderBrush}"  Width="16" Height="16"  	SnapsToDevicePixels="True">
+                        <Grid Width="8" Height="8" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path x:Name="path1" Stroke="#ADADAD" Data="M0,0 L8,8" StrokeThickness="2" />
+                            <Path x:Name="path2" Stroke="#ADADAD" Data="M8,0 L0,8" StrokeThickness="2" />
                         </Grid>
-                    </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver"  Value="True">
-                            <Setter Property="Opacity" Value="1" />
-                            <Setter Property="Fill" TargetName="borderBtn" Value="#FFED5A5A"/>
-                            <Setter Property="Stroke" TargetName="l1" Value="White"/>
-                            <Setter Property="Stroke" TargetName="l2" Value="White"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#ADADAD"/>
+                            <Setter Property="Background" Value="WhiteSmoke"/>
+                            <Setter Property="Stroke" TargetName="path1" Value="DarkRed"/>
+                            <Setter Property="Stroke" TargetName="path2" Value="DarkRed"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFADADAD" Offset="0"/>
+                                        <GradientStop Color="White" Offset="0.5"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -619,5 +622,29 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+
+    <Style TargetType="PasswordBox">
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="10" Color="Black" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="TextBox">
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="10" Color="Black" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

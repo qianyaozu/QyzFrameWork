@@ -6,4 +6,11 @@
     <Style TargetType="Image" x:Key="topImage">
         <Setter Property="Source" Value="image/top.png"></Setter>
     </Style>
+
+    <Style TargetType="Image" x:Key="dialog_top">
+        <Setter Property="Source" Value="image/Dialog_Top.jpg"></Setter>
+    </Style>
+    <Style TargetType="Image" x:Key="dialog_bottom">
+        <Setter Property="Source" Value="image/Dialog_footer.jpg"></Setter>
+    </Style>
 </ResourceDictionary>
