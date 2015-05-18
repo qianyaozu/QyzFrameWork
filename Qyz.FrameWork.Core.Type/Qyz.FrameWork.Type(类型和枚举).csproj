@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionType.cs" />
     <Compile Include="DllInfoAttribute.cs" />
     <Compile Include="PropertyChangedBase.cs" />
+    <Compile Include="SystemButton.cs" />
     <Compile Include="SystemType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemTypeAttribute.cs" />

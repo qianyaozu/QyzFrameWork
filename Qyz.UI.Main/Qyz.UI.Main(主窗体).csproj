@@ -91,6 +91,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.Config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,6 +99,22 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Qyz.BLL.Core\Qyz.BLL.Core.csproj">
+      <Project>{db5e7042-8571-4635-bcfd-83577af2563d}</Project>
+      <Name>Qyz.BLL.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type%28类型和枚举%29.csproj">
+      <Project>{fb6b5bcb-acd4-4a04-b5bc-4f7c2fc581da}</Project>
+      <Name>Qyz.FrameWork.Type%28类型和枚举%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qyz.FrameWork.Core\Qyz.FrameWork.Core%28核心库%29.csproj">
+      <Project>{2b204273-c192-4341-a6f4-258e47fc881a}</Project>
+      <Name>Qyz.FrameWork.Core%28核心库%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qyz.Model.Common\Qyz.Model.Common.csproj">
+      <Project>{93dc01eb-8f42-4758-b25a-0c6ca3689638}</Project>
+      <Name>Qyz.Model.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Qyz.UI.Base\Qyz.UI.Base%28控件基类%29.csproj">
       <Project>{b809e482-7cb9-40dc-af93-57a7afce6918}</Project>
       <Name>Qyz.UI.Base%28控件基类%29</Name>

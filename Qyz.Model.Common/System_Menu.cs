@@ -15,7 +15,7 @@ namespace Qyz.Model.Common
     public partial class System_Menu
     {
         public int SystemID { get; set; }
-        public int ModuleID { get; set; }
+        public int MenuID { get; set; }
         public Nullable<bool> IsEnable { get; set; }
     }
 }

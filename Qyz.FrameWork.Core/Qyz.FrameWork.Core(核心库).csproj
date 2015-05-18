@@ -39,14 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GlobalVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectMethod.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Qyz.BLL.Core\Qyz.BLL.Core.csproj">
+      <Project>{db5e7042-8571-4635-bcfd-83577af2563d}</Project>
+      <Name>Qyz.BLL.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type%28类型和枚举%29.csproj">
       <Project>{fb6b5bcb-acd4-4a04-b5bc-4f7c2fc581da}</Project>
       <Name>Qyz.FrameWork.Type%28类型和枚举%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qyz.Model.Common\Qyz.Model.Common.csproj">
+      <Project>{93dc01eb-8f42-4758-b25a-0c6ca3689638}</Project>
+      <Name>Qyz.Model.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

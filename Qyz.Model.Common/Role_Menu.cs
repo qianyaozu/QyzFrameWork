@@ -12,11 +12,10 @@ namespace Qyz.Model.Common
     using System;
     using System.Collections.Generic;
     
-    public partial class Role_Module
+    public partial class Role_Menu
     {
         public int RoleID { get; set; }
-        public int ModuleID { get; set; }
-        public string Functions { get; set; }
+        public int MenuID { get; set; }
         public Nullable<bool> IsEnable { get; set; }
     }
 }

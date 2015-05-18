@@ -70,11 +70,15 @@
     <Compile Include="Menu_Module.cs">
       <DependentUpon>CommonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\MenuModel.cs" />
     <Compile Include="Module.cs">
       <DependentUpon>CommonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.cs">
+      <DependentUpon>CommonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role_Menu.cs">
       <DependentUpon>CommonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Role_Module.cs">

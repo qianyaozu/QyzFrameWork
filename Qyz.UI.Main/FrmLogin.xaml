@@ -8,17 +8,17 @@
         <StackPanel HorizontalAlignment="Center">
             <TextBlock Text="账户：" Style="{DynamicResource DescribeTextBlockStyle}"></TextBlock>
 
-            <TextBox BorderThickness="1" BorderBrush="LightGray"  x:Name="txtUserName" Width="240" Height="20"  MaxLength="20"  Text=""    VerticalAlignment="Top" Background="#FFF3F5F5" AcceptsTab="True" TabIndex="0" />
+            <TextBox LostFocus="TextBox_LostFocus"   BorderThickness="1" BorderBrush="LightGray"  x:Name="txtUserName" Width="240" Height="20"  MaxLength="20"  Text=""    VerticalAlignment="Top" Background="#FFF3F5F5"  TabIndex="0" />
 
             <TextBlock Text="密码：" Style="{DynamicResource DescribeTextBlockStyle}" ></TextBlock>
 
-            <PasswordBox x:Name="txtPassWord"  MaxLength="20"   Width="240" BorderThickness="1" BorderBrush="LightGray" Background="#FFF3F5F5"  TabIndex="1"  >
-            </PasswordBox>
+            <PasswordBox x:Name="txtPassWord"   MaxLength="20"   Width="240" BorderThickness="1" BorderBrush="LightGray" Background="#FFF3F5F5"  TabIndex="1"  ></PasswordBox>
+            
             <TextBlock Text="系统："  Style="{DynamicResource DescribeTextBlockStyle}"></TextBlock>
-            <ComboBox  Width="240" BorderThickness="1" BorderBrush="LightGray"></ComboBox>
+            <ComboBox SelectedIndex="{Binding SelectIndex}" ItemsSource="{Binding SystemList,Mode=TwoWay}" DisplayMemberPath="Name"   Width="240" BorderThickness="1" BorderBrush="LightGray" TabIndex="2" ></ComboBox>
             
             <TextBlock Text="" Name="message" Margin="0,5,0,0"></TextBlock>
-            <Button Content="登  录"   Margin="0,5,0,0"  Height="30"      HorizontalAlignment="Center" Width="122" />
+            <Button Content="登  录" Margin="0,5,0,0"  Height="30" HorizontalAlignment="Center" Width="122" Click="Button_Click" />
 
         </StackPanel>
     </Grid>

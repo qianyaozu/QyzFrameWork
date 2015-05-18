@@ -29,6 +29,7 @@ namespace Qyz.Model.Common
         public DbSet<Menu> Menu { get; set; }
         public DbSet<Menu_Module> Menu_Module { get; set; }
         public DbSet<Module> Module { get; set; }
+        public DbSet<Role_Menu> Role_Menu { get; set; }
         public DbSet<Role_Module> Role_Module { get; set; }
         public DbSet<Role_System> Role_System { get; set; }
         public DbSet<Roles> Roles { get; set; }

@@ -48,6 +48,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type%28类型和枚举%29.csproj">
+      <Project>{fb6b5bcb-acd4-4a04-b5bc-4f7c2fc581da}</Project>
+      <Name>Qyz.FrameWork.Type%28类型和枚举%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qyz.UI.MVVM\Qyz.UI.MVVM%28mvvm模式封装%29.csproj">
+      <Project>{756d0d66-adaa-40d3-86f9-6e241cd87b2e}</Project>
+      <Name>Qyz.UI.MVVM%28mvvm模式封装%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Qyz.UI.Themes\Qyz.UI.Themes%28界面主题%29.csproj">
       <Project>{6d5130e4-ecb5-446a-8078-36e0272b102b}</Project>
       <Name>Qyz.UI.Themes%28界面主题%29</Name>

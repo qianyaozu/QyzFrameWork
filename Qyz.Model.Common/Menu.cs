@@ -15,7 +15,7 @@ namespace Qyz.Model.Common
     public partial class Menu
     {
         public int ID { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public int SystemID { get; set; }
         public string ImagePath { get; set; }
         public string Remark { get; set; }

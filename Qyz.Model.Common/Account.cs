@@ -15,6 +15,7 @@ namespace Qyz.Model.Common
     public partial class Account
     {
         public int ID { get; set; }
+        public string AccountName { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public int RoleID { get; set; }
@@ -23,6 +24,5 @@ namespace Qyz.Model.Common
         public string Phone { get; set; }
         public string Discribtion { get; set; }
         public string Remark { get; set; }
-        public string AccountName { get; set; }
     }
 }

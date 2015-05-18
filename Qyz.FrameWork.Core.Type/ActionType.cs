@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Qyz.FrameWork.Core
+namespace Qyz.FrameWork.Type
 {
-    public class Class1
+    public enum ActionType
     {
-        
+        Add,
+        Delete,
+        Update
     }
 }

@@ -15,6 +15,7 @@ namespace Qyz.UI.Main
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            #region 加载资源
             ResourceDictionary rd = new ResourceDictionary();
             rd.Source = new Uri("pack://application:,,,/Qyz.UI.Themes;component/defaultTheme/defaultImage.xaml", UriKind.RelativeOrAbsolute);
             ResourceDictionary rd1 = new ResourceDictionary();
@@ -25,8 +26,18 @@ namespace Qyz.UI.Main
             this.Resources.MergedDictionaries.Add(rd);
             this.Resources.MergedDictionaries.Add(rd1);
             this.Resources.MergedDictionaries.Add(rd2);
+            #endregion
+
+            MainWindow main = new MainWindow();
+            
             FrmLogin login = new FrmLogin();
-            login.Show();
+            if (!login.ShowDialog().Value)
+            {
+                Environment.Exit(0);
+            }
+            
+            main.Show();
+           
         }
     }
 }

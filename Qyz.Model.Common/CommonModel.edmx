@@ -53,6 +53,15 @@
           <Property Name="ICOSize" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Role_Menu">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" />
+        </EntityType>
         <EntityType Name="Role_Module">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -60,6 +69,7 @@
           </Key>
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="Functions" Type="varchar" MaxLength="100" />
           <Property Name="IsEnable" Type="bit" />
         </EntityType>
         <EntityType Name="Role_System">
@@ -82,10 +92,10 @@
         <EntityType Name="System_Menu">
           <Key>
             <PropertyRef Name="SystemID" />
-            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="MenuID" />
           </Key>
           <Property Name="SystemID" Type="int" Nullable="false" />
-          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="IsEnable" Type="bit" />
         </EntityType>
         <EntityType Name="Systems">
@@ -101,6 +111,7 @@
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu_Module" EntityType="Self.Menu_Module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role_Menu" EntityType="Self.Role_Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role_Module" EntityType="Self.Role_Module" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role_System" EntityType="Self.Role_System" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -111,20 +122,32 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QYZ_CommonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="QYZ_CommonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="QYZ_CommonModel.Account" />
+          <EntitySet Name="Menu" EntityType="QYZ_CommonModel.Menu" />
+          <EntitySet Name="Menu_Module" EntityType="QYZ_CommonModel.Menu_Module" />
+          <EntitySet Name="Module" EntityType="QYZ_CommonModel.Module" />
+          <EntitySet Name="Role_Menu" EntityType="QYZ_CommonModel.Role_Menu" />
+          <EntitySet Name="Role_Module" EntityType="QYZ_CommonModel.Role_Module" />
+          <EntitySet Name="Role_System" EntityType="QYZ_CommonModel.Role_System" />
+          <EntitySet Name="Roles" EntityType="QYZ_CommonModel.Roles" />
+          <EntitySet Name="System_Menu" EntityType="QYZ_CommonModel.System_Menu" />
+          <EntitySet Name="Systems" EntityType="QYZ_CommonModel.Systems" />
+        </EntityContainer>
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Discribtion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -150,14 +173,23 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SystemID" Type="Int32" Nullable="false" />
-          <Property Name="DllName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StartUpClass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DllName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StartUpClass" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Parameter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ICOSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role_Menu">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="IsEnable" Type="Boolean" />
         </EntityType>
         <EntityType Name="Role_Module">
           <Key>
@@ -166,6 +198,7 @@
           </Key>
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="Functions" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsEnable" Type="Boolean" />
         </EntityType>
         <EntityType Name="Role_System">
@@ -182,29 +215,18 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="System_Menu">
           <Key>
             <PropertyRef Name="SystemID" />
-            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="MenuID" />
           </Key>
           <Property Name="SystemID" Type="Int32" Nullable="false" />
-          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
           <Property Name="IsEnable" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="QYZ_CommonEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Account" EntityType="Self.Account" />
-          <EntitySet Name="Menu" EntityType="Self.Menu" />
-          <EntitySet Name="Menu_Module" EntityType="Self.Menu_Module" />
-          <EntitySet Name="Module" EntityType="Self.Module" />
-          <EntitySet Name="Role_Module" EntityType="Self.Role_Module" />
-          <EntitySet Name="Role_System" EntityType="Self.Role_System" />
-          <EntitySet Name="Roles" EntityType="Self.Roles" />
-          <EntitySet Name="System_Menu" EntityType="Self.System_Menu" />
-          <EntitySet Name="Systems" EntityType="QYZ_CommonModel.Systems" />
-        </EntityContainer>
         <EntityType Name="Systems">
           <Key>
             <PropertyRef Name="ID" />
@@ -222,87 +244,97 @@
           <EntitySetMapping Name="Account">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Account">
               <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Discribtion" ColumnName="Discribtion" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AccountName" ColumnName="AccountName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Discribtion" ColumnName="Discribtion" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menu">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
-                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menu_Module">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Menu_Module">
               <MappingFragment StoreEntitySet="Menu_Module">
-                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Module">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Module">
               <MappingFragment StoreEntitySet="Module">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
-                <ScalarProperty Name="DllName" ColumnName="DllName" />
-                <ScalarProperty Name="StartUpClass" ColumnName="StartUpClass" />
-                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
-                <ScalarProperty Name="ICO" ColumnName="ICO" />
-                <ScalarProperty Name="ICOSize" ColumnName="ICOSize" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="ICOSize" ColumnName="ICOSize" />
+                <ScalarProperty Name="ICO" ColumnName="ICO" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="StartUpClass" ColumnName="StartUpClass" />
+                <ScalarProperty Name="DllName" ColumnName="DllName" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_Menu">
+            <EntityTypeMapping TypeName="QYZ_CommonModel.Role_Menu">
+              <MappingFragment StoreEntitySet="Role_Menu">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role_Module">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Role_Module">
               <MappingFragment StoreEntitySet="Role_Module">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role_System">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Role_System">
               <MappingFragment StoreEntitySet="Role_System">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="QYZ_CommonModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="System_Menu">
             <EntityTypeMapping TypeName="QYZ_CommonModel.System_Menu">
               <MappingFragment StoreEntitySet="System_Menu">
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -40,9 +40,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\release\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindList.cs" />
+    <Compile Include="EFHelper.cs" />
     <Compile Include="ImageOperate\ImageCompress.cs" />
     <Compile Include="ImageOperate\ImageType.cs" />
     <Compile Include="ImageOperate\ImageUtil.cs" />
@@ -83,6 +89,15 @@
     </None>
     <None Include="Properties\app.manifest" />
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type%28类型和枚举%29.csproj">
+      <Project>{fb6b5bcb-acd4-4a04-b5bc-4f7c2fc581da}</Project>
+      <Name>Qyz.FrameWork.Type%28类型和枚举%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interface\" />
   </ItemGroup>
   <PropertyGroup>
     <StartArguments />
