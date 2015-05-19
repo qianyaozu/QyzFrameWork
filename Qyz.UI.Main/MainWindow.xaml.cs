@@ -2,13 +2,12 @@
 using Qyz.Model.Common;
 using Qyz.Model.Common.Model;
 using Qyz.UI.Base;
-using Qyz.UI.Main.ViewModel;
+ 
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
+using System.Linq; 
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,11 +26,11 @@ namespace Qyz.UI.Main
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowViewModel VM = new MainWindowViewModel();
+        
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = VM;
+            this.DataContext = this;
         }
 
         #region  属性改变事件
@@ -131,23 +130,23 @@ namespace Qyz.UI.Main
         {
             if(SelectSecMenu!=null)
             {
-                object start = ReflectMethod.CreateInstance(SelectSecMenu.DllName, SelectSecMenu.StartUpClass, true);
-                if (start != null)
-                {
-                    MethodInfo method = ((Type)start).GetMethods(BindingFlags.Static | BindingFlags.Public).Where(p => p.Name == "MainControl").FirstOrDefault();
-                    if(method!=null)
-                    {
-                        object[] obs = SelectSecMenu.Parameter.Split(',');
-                        MdiControl mdi = method.Invoke(null, obs) as MdiControl;
-                        mdi.Tag = SelectSecMenu.Name;
+                //object start = ReflectMethod.CreateInstance(SelectSecMenu.DllName, SelectSecMenu.StartUpClass, true);
+                //if (start != null)
+                //{
+                //    MethodInfo method = ((Type)start).GetMethods(BindingFlags.Static | BindingFlags.Public).Where(p => p.Name == "MainControl").FirstOrDefault();
+                //    if(method!=null)
+                //    {
+                //        object[] obs = SelectSecMenu.Parameter.Split(',');
+                //        MdiControl mdi = method.Invoke(null, obs) as MdiControl;
+                //        mdi.Tag = SelectSecMenu.Name;
 
-                        TabItem tbi = new TabItem();
-                        tbi.Style = (Style)this.FindResource("TabItemStyle1");
-                        tbi.Header = SelectSecMenu.Name;
-                        MainControl.Items.Add(tbi);
-                        return;
-                    } 
-                }
+                //        TabItem tbi = new TabItem();
+                //        tbi.Style = (Style)this.FindResource("TabItemStyle1");
+                //        tbi.Header = SelectSecMenu.Name;
+                //        MainControl.Items.Add(tbi);
+                //        return;
+                //    } 
+                //}
                 MessageBox.Show("加载失败");
             }
         }

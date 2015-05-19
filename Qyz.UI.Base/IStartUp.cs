@@ -9,7 +9,7 @@ namespace Qyz.UI.Base
     {
         void Run(string FormCaption, string uParameter);
 
-        public virtual System.Windows.Controls.UserControl MainControl;
+       // public virtual System.Windows.Controls.UserControl MainControl;
        
     }
 }
