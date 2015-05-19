@@ -24,8 +24,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SystemID" Type="int" Nullable="false" />
           <Property Name="ImagePath" Type="varchar" MaxLength="100" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
@@ -153,8 +153,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SystemID" Type="Int32" Nullable="false" />
           <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -235,7 +235,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

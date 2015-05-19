@@ -1,0 +1,30 @@
+﻿<Window Name="UserControl" Window.WindowStyle="None" 
+        Window.AllowsTransparency="True" 
+        Window.WindowStartupLocation="CenterScreen"
+        Height="142" Width="340"  
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         x:Class="Qyz.UI.Controls.MessageWindow" Background="{x:Null}" MouseLeftButtonDown="Window_MouseLeftButtonDown" Loaded="UserControl_Loaded">
+    <Window.Resources>
+        <SolidColorBrush x:Key="CloseButtonBrush" Color="#FFADADAD"/>
+    </Window.Resources>
+    <Grid Grid.Name="LayoutRoot">
+        <Image  Margin="0" Image.Source="Image/messagebg.png" Image.Stretch="Fill"  />
+        <Label x:Name="LabTitle"  Height="25.368"  Margin="6,4,82,0"  VerticalAlignment="Top" Control.Foreground="#FFFAF9F9" Control.FontWeight="Bold" />
+        
+        <TextBlock x:Name="LabTips"  Margin="56,43,13,43" TextWrapping="Wrap" ></TextBlock>
+        <StackPanel Orientation="Horizontal" Width="180" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+            <Button x:Name="vbutton2" ContentControl.Content="取消"  Height="28"  Margin="5,0,5,5"  VerticalAlignment="Bottom"  HorizontalAlignment="Right"  Width="78" Click="vbutton2_Click" />
+            <Button x:Name="vbutton1" ContentControl.Content="确定"  Height="28"  Margin="5,0,5,5"  VerticalAlignment="Bottom"  HorizontalAlignment="Right"  Width="78" Click="vbutton1_Click" />
+        </StackPanel>
+        <Label x:Name="vPicBox"  HorizontalAlignment="Left"  Margin="8,47,0,52"  Width="44" />
+
+
+        <Button x:Name="buttonclose" Style="{StaticResource CloseButtonStyle}" ContentControl.Content="X"   HorizontalAlignment="Right"  Margin="0,6.368,10.16,0"  Width="22" UIElement.RenderTransformOrigin="0.5,0.5"  Height="22"  VerticalAlignment="Top" Click="buttonclose_Click">
+         
+        </Button>
+    </Grid>
+</Window>
+ 
+
+ 

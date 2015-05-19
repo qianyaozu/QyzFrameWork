@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DialogWindow.cs" />
+    <Compile Include="IStartUp.cs" />
     <Compile Include="MdiControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

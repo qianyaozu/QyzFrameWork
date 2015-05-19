@@ -119,10 +119,22 @@
       <Project>{b809e482-7cb9-40dc-af93-57a7afce6918}</Project>
       <Name>Qyz.UI.Base%28控件基类%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Qyz.UI.Controls\Qyz.UI.Controls%28控件集合%29.csproj">
+      <Project>{807012d9-e9d7-4cea-916d-76fc8dfdcb32}</Project>
+      <Name>Qyz.UI.Controls%28控件集合%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Qyz.UI.MVVM\Qyz.UI.MVVM%28mvvm模式封装%29.csproj">
+      <Project>{756d0d66-adaa-40d3-86f9-6e241cd87b2e}</Project>
+      <Name>Qyz.UI.MVVM%28mvvm模式封装%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Qyz.UI.Themes\Qyz.UI.Themes%28界面主题%29.csproj">
       <Project>{6d5130e4-ecb5-446a-8078-36e0272b102b}</Project>
       <Name>Qyz.UI.Themes%28界面主题%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

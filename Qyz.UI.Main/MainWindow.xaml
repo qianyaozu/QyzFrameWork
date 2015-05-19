@@ -29,45 +29,32 @@
             </Grid.RowDefinitions>
             <!--左侧主菜单栏-->
             <Image Grid.RowSpan="3" Style="{DynamicResource leftImage}" Stretch="Fill" Margin="0,0,-6.5,0"/>
-            <ItemsControl Grid.Row="1" Grid.RowSpan="2">
-                
+            <ItemsControl Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding MenuList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    </StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton  Style="{DynamicResource RadioButtonStyle1}" FontSize="32" Checked="MenuCheck_Checked" ToolTip="{Binding MenuName}" IsChecked="True" Tag="100">
+                            <Image Height="36" Source="{Binding ImagePath}" Stretch="Fill" Width="36"/>
+                        </RadioButton>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <StackPanel Grid.Row="1" Grid.RowSpan="2">
-                <!--<RadioButton  Name="rdbAlarm" Style="{DynamicResource RadioButtonStyle1}" FontSize="32" Checked="MenuCheck_Checked" ToolTip="报警" IsChecked="True" Tag="100">
-                    <Image Height="36" Source="Image/NewImage/报警.png" Stretch="Fill" Width="36"/>
-                </RadioButton>
-                <RadioButton  Name="rdbSet" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked" ToolTip="配置" Tag="5">
-                    <Image Height="36" Source="Image/NewImage/配置.png" Stretch="Fill" Width="36"/>
-                </RadioButton>
-                <RadioButton  Name="rdbRt" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked"  ToolTip="监控" Tag="50">
-                    <Image Height="36" Source="Image/NewImage/实时.png" Stretch="Fill" Width="36"/>
-                </RadioButton>
-                <RadioButton  Name="rdbHis" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked" ToolTip="查询" Tag="60">
-                    <Image Height="36" Source="Image/NewImage/历史.png" Stretch="Fill" Width="36" />
-                </RadioButton>
-                <RadioButton  Name="rdbReport" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked" ToolTip="报表" Tag="70">
-                    <Image Height="36" Source="Image/NewImage/报表.png" Stretch="Fill" Width="36" />
-                </RadioButton>
-                <RadioButton  Name="rdbAttendance" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked"  ToolTip="考勤" Tag="80">
-                    <Image Height="36" Source="Image/NewImage/考勤.png" Stretch="Fill" Width="36"/>
-                </RadioButton>
-                <RadioButton  Name="rdb3D" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked" ToolTip="图形" Tag="1">
-                    <Image Height="36" Source="Image/NewImage/图形.png" Stretch="Fill" Width="36" />
-                </RadioButton>
-                <RadioButton  Name="rdbTools" Style="{DynamicResource RadioButtonStyle1}" FontSize="32"  Checked="MenuCheck_Checked" ToolTip="工具" Tag="90">
-                    <Image Height="36" Source="Image/NewImage/工具.png" Stretch="Fill" Width="36" />
-                </RadioButton>-->
-            </StackPanel>
+          
             <!--标题栏-->
             <Border x:Name="TitleBorder" BorderBrush="Black" BorderThickness="0" Background="#00000000" Grid.ColumnSpan="4" >
                 <Grid>
                     <Image Style="{DynamicResource topImage}" Stretch="Fill" Margin="0,0,-1,-6" OpacityMask="#FF1F283A"/>
                     <Button x:Name="btnSkin" Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,90,0" Style="{DynamicResource WinSkinButtonStyle}" VerticalAlignment="Top" Width="25"/>
-                    <Button x:Name="btnMin" Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,65,0" Style="{DynamicResource WinMinButtonStyle}" VerticalAlignment="Top" Width="25" />
-                    <Button x:Name="btnMax" Height="20" Margin="0,0,40,0" Style="{DynamicResource WinMaxButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="25" >
+                    <Button Click="btnMin_Click" x:Name="btnMin" Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,65,0" Style="{DynamicResource WinMinButtonStyle}" VerticalAlignment="Top" Width="25" />
+                    <Button Click="btnMax_Click" x:Name="btnMax" Height="20" Margin="0,0,40,0" Style="{DynamicResource WinMaxButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="25" >
                     <Rectangle Fill="#FFF4F4F5" Height="8.875" Stroke="Black" Width="12.687"/>
                     </Button>
-                    <Button x:Name="btnClose" Content="Button" HorizontalAlignment="Right" Height="20" Style="{DynamicResource WinCloseButtonStyle}" VerticalAlignment="Top" Width="40" />
+                    <Button Click="btnClose_Click" x:Name="btnClose" Content="Button" HorizontalAlignment="Right" Height="20" Style="{DynamicResource WinCloseButtonStyle}" VerticalAlignment="Top" Width="40" />
                     <Button Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,115,0" Style="{DynamicResource HelpButtonStyle}" VerticalAlignment="Top" Width="25"/>
                     <Button Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,140,0" Style="{DynamicResource LogButtonStyle}" VerticalAlignment="Top" Width="25"  />
                     
@@ -77,12 +64,13 @@
 
             <!--二级菜单栏-->
             <ScrollViewer VerticalScrollBarVisibility="Auto"    FocusVisualStyle="{x:Null}" Name="SV"  Background="#FFEDF2F8" Grid.Column="1" Grid.Row="1">
-                <ItemsControl Name="listControl"  FocusVisualStyle="{x:Null}"></ItemsControl>
+                <ItemsControl Name="listControl"   FocusVisualStyle="{x:Null}" ItemsSource="{Binding SecMenuList}"> 
+                </ItemsControl>
             </ScrollViewer>
             <Button Content="btnLeft" x:Name="btnLeft" Grid.Column="2" Grid.Row="1" FocusVisualStyle="{x:Null}" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Center" Height="311.052" Cursor="Hand"/>
 
             <!--mdi主界面-->
-            <TabControl x:Name="MdiControl" Grid.Column="3" Background="#FFEDF2F8" BorderBrush="#FF2B3D4E" BorderThickness="0" Grid.Row="1" Margin="0,5,0,0"/>
+            <TabControl x:Name="MainControl" Grid.Column="3" Background="#FFEDF2F8" BorderBrush="#FF2B3D4E" BorderThickness="0" Grid.Row="1" Margin="0,5,0,0"/>
 
             <!--状态栏-->
             <Grid Grid.ColumnSpan="3" Grid.Row="2" Background="#FFEDF2F8" Grid.Column="1">
@@ -98,12 +86,8 @@
                     <ColumnDefinition Width="700"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Orientation="Horizontal" >
-                    <TextBlock Text=""   Name="txtVersion"></TextBlock>
-                    <TextBlock Text=""    Name="txtUserName"></TextBlock>
-                    <TextBlock Text=""    Name="txtVersions"></TextBlock>
-                    <TextBlock Text=""    Name="txtOpenTime"></TextBlock>
-                    <TextBlock Text=""    Name="txtLoginTime"></TextBlock>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" > 
+                    <TextBlock     Name="txtUserName" Text="{Binding UserName}"></TextBlock>  
                 </StackPanel>
                 <Border  Grid.Column="1" Name="errorpanel"  ClipToBounds="True">
                     <TextBlock Name="lblWaringText" HorizontalAlignment="Right" VerticalAlignment="Center"    Foreground="Red"       RenderTransformOrigin="0.5,0.5">
