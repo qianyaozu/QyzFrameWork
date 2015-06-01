@@ -1,10 +1,60 @@
 ﻿<Window x:Class="Qyz.UI.Main.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-       
-        Width="1000" Height="700" ResizeMode="CanMinimize" MinWidth="1024" x:Name="FirstWindow" MinHeight="768"
+       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+     xmlns:converter="clr-namespace:Qyz.FrameWork.Utility;assembly=Qyz.FrameWork.Utility"
+        Width="800" Height="600" ResizeMode="CanMinimize" MinWidth="800" x:Name="FirstWindow" MinHeight="600"
         WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#00000000" WindowStyle="None" Foreground="#00000000" BorderBrush="#00000000" SizeChanged="MainWindow_SizeChanged">
+    <Window.Resources>
+        <Style x:Key="closeBtnStyle" TargetType="Button">
+            <Setter Property="Margin" Value="2,0,2,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Margin="-5.167,0,0,-5" Tag="{TemplateBinding Tag}"  MouseLeftButtonDown="closebtn_MouseLeftButtonDown"  >
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding CloseMdiControlCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Ellipse Width="0" Height="0" Fill="#FF5D554F" Opacity=".1" StrokeThickness="2"  Stroke="#FFC27400" HorizontalAlignment="Right" Margin="0,0,-0.5,0" VerticalAlignment="Top"/>
+                            <Ellipse x:Name="borderBtn" Width="11.001" Height="11" StrokeThickness="0" Fill="{TemplateBinding Background}"  Stroke="#FFC27400" HorizontalAlignment="Right" Margin="0,1.085,2.568,0" VerticalAlignment="Top"/>
 
+                            <!--按钮内容-->
+                            <Grid HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0" VerticalAlignment="Stretch">
+                                <Canvas HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-0.9,-0.637,0,0" >
+                                    <Line StrokeThickness="1" x:Name="l1" Stroke="{TemplateBinding BorderBrush}" X1="0" Y1="0" X2="7" Y2="7" Canvas.Left="4.25" Canvas.Top="3.75" Width="7.062" Height="7"/>
+                                    <Line StrokeThickness="1" x:Name="l2" Stroke="{TemplateBinding BorderBrush}" X1="0" Y1="7" X2="7" Y2="0" Canvas.Left="4.25" Canvas.Top="3.75" Height="7" Width="7.062"/>
+                                </Canvas>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="True">
+                                <Setter Property="Opacity" Value="1" />
+                                <Setter Property="Fill" TargetName="borderBtn" Value="#FFED5A5A"/>
+                                <Setter Property="Stroke" TargetName="l1" Value="White"/>
+                                <Setter Property="Stroke" TargetName="l2" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <converter:ImageConverter x:Key="imageconverter"></converter:ImageConverter>
+    </Window.Resources> 
     <Border x:Name="border" BorderBrush="#FF414752" BorderThickness="6,6,2,2" RenderTransformOrigin="0.5,0.5">
         <Border.RenderTransform>
             <TransformGroup>
@@ -29,27 +79,30 @@
             </Grid.RowDefinitions>
             <!--左侧主菜单栏-->
             <Image Grid.RowSpan="3" Style="{DynamicResource leftImage}" Stretch="Fill" Margin="0,0,-6.5,0"/>
-            <ItemsControl Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding MenuList}">
-                <ItemsControl.ItemsPanel>
+            <ListView BorderThickness="0" SelectedItem="{Binding SelectMenu,Mode=TwoWay}"  ItemsSource="{Binding MenuList,Mode=TwoWay}" Grid.Row="1" Grid.RowSpan="2" Background="Transparent" >
+                <ListView.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FF414752"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF414752"/>
+                </ListView.Resources>
+                <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                    </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        </StackPanel>
                     </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate> 
                     <DataTemplate>
-                        <RadioButton  Style="{DynamicResource RadioButtonStyle1}" FontSize="32" Checked="MenuCheck_Checked" ToolTip="{Binding MenuName}" IsChecked="True" Tag="100">
-                            <Image Height="36" Source="{Binding ImagePath}" Stretch="Fill" Width="36"/>
-                        </RadioButton>
+                        <Image Height="40"  Source="{Binding ImagePath,Converter={StaticResource imageconverter}}" Stretch="Fill" Width="40"  ToolTip="{Binding Name}"/>
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                </ListView.ItemTemplate>
+            </ListView>
+           
           
             <!--标题栏-->
-            <Border x:Name="TitleBorder" BorderBrush="Black" BorderThickness="0" Background="#00000000" Grid.ColumnSpan="4" >
+            <Border x:Name="TitleBorder" BorderBrush="Black" BorderThickness="0" Background="#00000000" Grid.ColumnSpan="4" MouseLeftButtonDown="TitleBorder_MouseLeftButtonDown">
                 <Grid>
                     <Image Style="{DynamicResource topImage}" Stretch="Fill" Margin="0,0,-1,-6" OpacityMask="#FF1F283A"/>
-                    <Button x:Name="btnSkin" Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,90,0" Style="{DynamicResource WinSkinButtonStyle}" VerticalAlignment="Top" Width="25"/>
+                    <Button  x:Name="btnSkin" Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,90,0" Style="{DynamicResource WinSkinButtonStyle}" VerticalAlignment="Top" Width="25"/>
                     <Button Click="btnMin_Click" x:Name="btnMin" Content="Button" HorizontalAlignment="Right" Height="20" Margin="0,0,65,0" Style="{DynamicResource WinMinButtonStyle}" VerticalAlignment="Top" Width="25" />
                     <Button Click="btnMax_Click" x:Name="btnMax" Height="20" Margin="0,0,40,0" Style="{DynamicResource WinMaxButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="25" >
                     <Rectangle Fill="#FFF4F4F5" Height="8.875" Stroke="Black" Width="12.687"/>
@@ -64,13 +117,125 @@
 
             <!--二级菜单栏-->
             <ScrollViewer VerticalScrollBarVisibility="Auto"    FocusVisualStyle="{x:Null}" Name="SV"  Background="#FFEDF2F8" Grid.Column="1" Grid.Row="1">
-                <ItemsControl Name="listControl"   FocusVisualStyle="{x:Null}" ItemsSource="{Binding SecMenuList}"> 
-                </ItemsControl>
+               
+                <ListView Name="listControl"   FocusVisualStyle="{x:Null}" ItemsSource="{Binding ModuleList,Mode=TwoWay}">
+                    
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            </StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Name}"    Command="{Binding DataContext.OpenModuleCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+ 
+                </ListView>
             </ScrollViewer>
-            <Button Content="btnLeft" x:Name="btnLeft" Grid.Column="2" Grid.Row="1" FocusVisualStyle="{x:Null}" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Center" Height="311.052" Cursor="Hand"/>
+            <Button Content="btnLeft" x:Name="btnLeft" Grid.Column="2" Grid.Row="1" FocusVisualStyle="{x:Null}" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Center" Height="311.052" Cursor="Hand" Click="btnLeft_Click"/>
 
             <!--mdi主界面-->
-            <TabControl x:Name="MainControl" Grid.Column="3" Background="#FFEDF2F8" BorderBrush="#FF2B3D4E" BorderThickness="0" Grid.Row="1" Margin="0,5,0,0"/>
+            <TabControl ItemsSource="{Binding TabItemsList}"  SelectedIndex="{Binding SelectMdiIndex,Mode=TwoWay}" x:Name="MainControl" Grid.Column="3" Background="#FFEDF2F8" BorderBrush="#FF2B3D4E" BorderThickness="0" Grid.Row="1" Margin="0,5,0,0">
+                <TabControl.Resources>
+                    <Style  TargetType="TabItem">
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="Padding" Value="12,2,12,2"/>
+                        <Setter Property="Opacity" Value=".6"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="BorderBrush" Value="#FF5C5C5C"/>
+                        <Setter Property="Foreground" Value="{DynamicResource  SystemColors.ControlTextBrushKey}"/>
+                        <Setter Property="Background" Value="{DynamicResource  SystemColors.ActiveCaptionBrushKey}"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Content" Value="{Binding ContentControl}"></Setter>
+                        <Setter Property="IsSelected" Value="{Binding IsSelected}"></Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border x:Name="ClassicBorder"  BorderThickness="1" SnapsToDevicePixels="true" CornerRadius="3,3,0,0" Background="#FF1F2839" BorderBrush="#FF1F2839" >
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="SelectionStates">
+                                                <VisualState x:Name="Unselected">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ClassicBorder">
+                                                            <EasingColorKeyFrame KeyTime="0" Value="#FFCACACA"/>
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="ClassicBorder">
+                                                            <EasingThicknessKeyFrame KeyTime="0" Value="1,1,1,0"/>
+                                                        </ThicknessAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ClassicBorder">
+                                                            <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected"/>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Grid>
+                                            <Button SnapsToDevicePixels="True"  CommandParameter="{Binding}" Name="closebtn" Tag="{Binding Name}"   Visibility="Hidden" Style="{DynamicResource closeBtnStyle}" Margin="0,5.038,-2.42,7.972" HorizontalAlignment="Right" Width="9.75" Height="Auto" VerticalAlignment="Stretch"   RenderTransformOrigin="0.5,0.5">
+                                                <Button.RenderTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform/>
+                                                        <SkewTransform/>
+                                                        <RotateTransform/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </Button.RenderTransform>
+                                            </Button>
+                                            <ContentPresenter Content="{Binding Name}"   HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="true">
+                                            <Setter Property="Panel.ZIndex" Value="1"/>
+                                            <Setter Property="Opacity" Value="1"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Visibility" TargetName="closebtn" Value="Visible"/>
+                                            <Setter Property="Margin" Value="-2"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Visibility" TargetName="closebtn" Value="Visible"/>
+                                        </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="true"/>
+                                                <Condition Property="TabStripPlacement" Value="Top"/>
+                                            </MultiTrigger.Conditions>
+
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="true"/>
+                                                <Condition Property="TabStripPlacement" Value="Bottom"/>
+                                            </MultiTrigger.Conditions>
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="true"/>
+                                                <Condition Property="TabStripPlacement" Value="Left"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Padding" Value="11,2,14,2"/>
+                                        </MultiTrigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsSelected" Value="true"/>
+                                                <Condition Property="TabStripPlacement" Value="Right"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Padding" Value="14,2,11,2"/>
+                                        </MultiTrigger>
+                                        <Trigger Property="IsEnabled" Value="false">
+                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="FontSize" Value="14"/>
+                    </Style>
+                </TabControl.Resources>
+            </TabControl>
 
             <!--状态栏-->
             <Grid Grid.ColumnSpan="3" Grid.Row="2" Background="#FFEDF2F8" Grid.Column="1">
@@ -87,7 +252,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" > 
-                    <TextBlock     Name="txtUserName" Text="{Binding UserName}"></TextBlock>  
+                    <TextBlock  Foreground="Black"   Name="txtUserName" Text="{Binding UserName}"></TextBlock>  
                 </StackPanel>
                 <Border  Grid.Column="1" Name="errorpanel"  ClipToBounds="True">
                     <TextBlock Name="lblWaringText" HorizontalAlignment="Right" VerticalAlignment="Center"    Foreground="Red"       RenderTransformOrigin="0.5,0.5">

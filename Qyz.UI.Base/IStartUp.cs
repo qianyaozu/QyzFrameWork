@@ -7,9 +7,9 @@ namespace Qyz.UI.Base
 {
     public interface IStartUp
     {
-        void Run(string FormCaption, string uParameter);
+        //void Run(string FormCaption, string uParameter);
 
-       // public virtual System.Windows.Controls.UserControl MainControl;
+          System.Windows.Controls.UserControl MainControl(string uParameter); 
        
     }
 }

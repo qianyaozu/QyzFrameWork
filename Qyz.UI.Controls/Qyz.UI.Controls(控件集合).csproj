@@ -56,12 +56,6 @@
     <Compile Include="MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabControl\Converters.cs" />
-    <Compile Include="TabControl\Helper.cs" />
-    <Compile Include="TabControl\TabControl.cs" />
-    <Compile Include="TabControl\TabEventArgs.cs" />
-    <Compile Include="TabControl\TabItem.cs" />
-    <Compile Include="TabControl\TabPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,7 @@
   <ItemGroup>
     <Compile Include="GlobalVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReflectMethod.cs" />
+    <Compile Include="ReflectFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Qyz.BLL.Core\Qyz.BLL.Core.csproj">

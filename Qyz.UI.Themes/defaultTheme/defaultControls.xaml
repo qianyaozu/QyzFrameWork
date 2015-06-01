@@ -18,7 +18,7 @@
         <Setter Property="Margin" Value="0 10 0 0"></Setter>
     </Style>
 
-
+ 
     <Style x:Key="CloseButtonStyle" TargetType="Button">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -58,119 +58,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="TabItemStyle1" TargetType="TabItem">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Padding" Value="12,2,12,2"/>
-        <Setter Property="Opacity" Value=".6"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="BorderBrush" Value="#FF5C5C5C"/>
-        <Setter Property="Foreground" Value="{DynamicResource  SystemColors.ControlTextBrushKey}"/>
-        <Setter Property="Background" Value="{DynamicResource  SystemColors.ActiveCaptionBrushKey}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TabItem">
-                    <Border x:Name="ClassicBorder"  BorderThickness="1" SnapsToDevicePixels="true" CornerRadius="3,3,0,0" Background="#FF1F2839" BorderBrush="#FF1F2839" >
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ClassicBorder">
-                                            <EasingColorKeyFrame KeyTime="0" Value="#FFCACACA"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderThickness)" Storyboard.TargetName="ClassicBorder">
-                                            <EasingThicknessKeyFrame KeyTime="0" Value="1,1,1,0"/>
-                                        </ThicknessAnimationUsingKeyFrames>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ClassicBorder">
-                                            <EasingColorKeyFrame KeyTime="0" Value="Black"/>
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Selected"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Grid>
-                            <Button SnapsToDevicePixels="True" Name="closebtn" Tag="{TemplateBinding Header}"   Visibility="Hidden" Style="{StaticResource closeBtnStyle}" Margin="0,5.038,-2.42,7.972" HorizontalAlignment="Right" Width="9.75" Height="Auto" VerticalAlignment="Stretch"   RenderTransformOrigin="0.5,0.5">
-                                <Button.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Button.RenderTransform>
-                            </Button>
-                            <ContentPresenter ContentSource="Header" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Panel.ZIndex" Value="1"/>
-                            <Setter Property="Opacity" Value="1"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="Visibility" TargetName="closebtn" Value="Visible"/>
-                            <Setter Property="Margin" Value="-2"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Visibility" TargetName="closebtn" Value="Visible"/>
-                        </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Top"/>
-                            </MultiTrigger.Conditions>
-
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Bottom"/>
-                            </MultiTrigger.Conditions>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Left"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Padding" Value="11,2,14,2"/>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true"/>
-                                <Condition Property="TabStripPlacement" Value="Right"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Padding" Value="14,2,11,2"/>
-                        </MultiTrigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="FontSize" Value="14"/>
-    </Style>
-    <Style x:Key="RadioButtonStyle1" TargetType="{x:Type RadioButton}">
-        <Setter Property="Height" Value="50"/>
-        <!--<Setter Property="FocusVisualStyle" Value="{x:Null}"/>-->
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Grid x:Name="grid" Background="#00000000" Tag="{Binding}"  >
-                        <Themes:ClassicBorderDecorator x:Name="border" BorderBrush="#00000000" BorderThickness="1" Opacity="0"/>
-                        <ContentPresenter RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Background" TargetName="grid" Value="#FF414752"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="White"/>
-    </Style>
+   
+  
 
     <Style x:Key="ThumbStyle1" TargetType="{x:Type Thumb}">
         <Setter Property="Template">
@@ -644,6 +533,96 @@
                         <DropShadowEffect BlurRadius="10" Color="Black" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0"/>
                     </Setter.Value>
                 </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+
+
+    <Style TargetType="DataGrid">
+        <!--网格线颜色-->
+        <Setter Property="CanUserResizeColumns" Value="True"/>
+        <Setter Property="Background" Value="#E6DBBB" />
+        <Setter Property="BorderBrush" Value="WhiteSmoke" />
+        <Setter Property="HorizontalGridLinesBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="WhiteSmoke"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalGridLinesBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="WhiteSmoke"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <LinearGradientBrush x:Key="DataGridViewBackground" EndPoint="0,0.043" StartPoint="0,0">
+        <GradientStop Color="#F3F3F3" Offset="0"/>
+        <GradientStop Color="#EBEBEB" Offset="0.5"/>
+        <GradientStop Color="#DDDDDD" Offset="0.5"/>
+        <GradientStop Color="#CDCDCD" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!--标题栏样式-->
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="Foreground" Value="#323433" />
+        <Setter Property="FontSize" Value="12" />
+        <!--<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"></Setter>-->
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+        <Setter Property="Height" Value="25"/>
+    </Style>
+
+
+
+    <!--行样式触发-->
+    <!--背景色改变必须先设置cellStyle 因为cellStyle会覆盖rowStyle样式-->
+    <Style  TargetType="DataGridRow">
+        <Setter Property="Background" Value="#F2F2F2" />
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="FontFamily" Value="Microsoft YaHei"></Setter>
+        <Style.Triggers>
+            <!--隔行换色-->
+            <Trigger Property="AlternationIndex" Value="0" >
+                <Setter Property="Background" Value="#e7ebf4" />
+            </Trigger>
+            <Trigger Property="AlternationIndex" Value="1" >
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightGray"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Background" Value="LightGray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--单元格样式触发-->
+    <Style TargetType="DataGridCell">
+        <Setter Property="ToolTipService.ToolTip"   Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=Content.Text}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="FontFamily" Value="Microsoft YaHei"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridCell">
+                    <TextBlock HorizontalAlignment="Left" Margin="8,0,0,0" FontSize="12" VerticalAlignment="Center" FontFamily="Microsoft YaHei" >
+                           <ContentPresenter />
+                    </TextBlock>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="Black"/>
             </Trigger>
         </Style.Triggers>
     </Style>

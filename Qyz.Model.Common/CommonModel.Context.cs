@@ -13,10 +13,10 @@ namespace Qyz.Model.Common
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QYZ_CommonEntities : DbContext
+    public partial class QYZEntity : DbContext
     {
-        public QYZ_CommonEntities()
-            : base("name=QYZ_CommonEntities")
+        public QYZEntity()
+            : base("name=QYZEntity")
         {
         }
     
@@ -25,15 +25,13 @@ namespace Qyz.Model.Common
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Account> Account { get; set; }
-        public DbSet<Menu> Menu { get; set; }
-        public DbSet<Menu_Module> Menu_Module { get; set; }
-        public DbSet<Module> Module { get; set; }
-        public DbSet<Role_Menu> Role_Menu { get; set; }
-        public DbSet<Role_Module> Role_Module { get; set; }
-        public DbSet<Role_System> Role_System { get; set; }
-        public DbSet<Roles> Roles { get; set; }
-        public DbSet<System_Menu> System_Menu { get; set; }
-        public DbSet<Systems> Systems { get; set; }
+        public DbSet<Sys_Accounts> Sys_Accounts { get; set; }
+        public DbSet<Sys_Menus> Sys_Menus { get; set; }
+        public DbSet<Sys_Modules> Sys_Modules { get; set; }
+        public DbSet<Sys_Role_Menu> Sys_Role_Menu { get; set; }
+        public DbSet<Sys_Role_Module> Sys_Role_Module { get; set; }
+        public DbSet<Sys_Role_System> Sys_Role_System { get; set; }
+        public DbSet<Sys_Roles> Sys_Roles { get; set; }
+        public DbSet<Sys_Systems> Sys_Systems { get; set; }
     }
 }

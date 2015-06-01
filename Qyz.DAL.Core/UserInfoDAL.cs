@@ -1,5 +1,4 @@
-﻿using Qyz.Model.Common;
-using Qyz.Model.Common.Model;
+﻿using Qyz.Model.Common; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,119 +8,112 @@ namespace Qyz.DAL.Core
 {
     public class UserInfoDAL
     {
-        QYZ_CommonEntities db = new QYZ_CommonEntities();
+        QYZEntity db = new QYZEntity();
         /// <summary>
         ///  获取用户信息
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="passWord"></param>
         /// <returns></returns>
-        public Account GetUserInfo(string userName, string passWord)
+        public Sys_Accounts GetUserInfo(string userName, string passWord)
         {
-            var query = db.Account.Where(p => p.AccountName == userName && p.PassWord == passWord).FirstOrDefault();
-            return query ?? (query as Account);
+            var query = from ac in db.Sys_Accounts
+                        where ac.AccountName == userName && ac.PassWord == passWord
+                        select ac;
+            if (query != null && query.ToList().Count > 0)
+                return query.FirstOrDefault();
+            return null;
 
         }
-
-        public bool InsertUser(Account account)
+        /// <summary>
+        /// 新增账户
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool InsertUser(Sys_Accounts account)
         {
-
-            if (ExistsUser(account) != null)
+            if (account != null && account.UserName != "" && account.PassWord != "")
             {
-                db.Account.Add(account);
+                db.AddToSys_Accounts(account);
                 db.SaveChanges();
                 return true;
             }
-            else
-                return false;
+            return false;
         }
-
-        public bool UpdateUser(Account account)
+        /// <summary>
+        /// 更新账户
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool UpdateUser(Sys_Accounts account)
         {
-            Account acc = ExistsUser(account);
+            Sys_Accounts acc = ExistsUser(account);
             if (acc != null)
             {
-                acc = account;
+                acc = account; 
                 db.SaveChanges();
                 return true;
             }
             return false;
 
         }
-        public Account ExistsUser(Account account)
+        /// <summary>
+        /// 是否存在该账户
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public Sys_Accounts ExistsUser(Sys_Accounts account)
         {
-            return db.Account.First(p => p.AccountName == account.AccountName || p.ID == account.ID);
-        }
-
-
-        public List<Systems> GetSystemsByAccount(string userName)
-        {
-
-
-            var query = from p in db.Account
-                        join p2 in db.Role_System on p.RoleID equals p2.RoleID
-                        join p3 in db.Systems on p2.SystemID equals p3.ID
-                        where p.AccountName == userName  
-                        select p3;
-            if(query!=null)
-            {
-                List<Systems> systemList = new List<Systems>(query);
-                return systemList;
-            }
-            return null;
+             var query = from ac in db.Sys_Accounts
+                        where ac.AccountName == account.UserName 
+                        select ac;
+             if (query != null && query.ToList().Count > 0)
+                 return query.ToList<Sys_Accounts>().FirstOrDefault();
+             return null;
         }
 
         /// <summary>
-        /// 根据用户名返回菜单列表
+        /// 根据用户名称获取系统权限
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public List<Sys_Systems> GetSystemsByAccount(string userName)
+        {
+            var query = from sys in db.Sys_Systems
+                        join rs in db.Sys_Role_System on sys.ID equals rs.SystemID
+                        join ac in db.Sys_Accounts on rs.RoleID equals ac.RoleID
+                        where ac.AccountName == userName && rs.IsEnable != true
+                        select sys;
+            return query == null ? null : new List<Sys_Systems>(query);
+        }
+
+        /// <summary>
+        /// 根据用户名获得菜单列表
         /// </summary>
         /// <param name="accountName"></param>
         /// <returns></returns>
-        public List<MenuModel> GetMenuModelByAccount(int userId)
+        public List<Sys_Menus> GetMenuByAccount(string userName,int systemId)
+        { 
+            var query = from menu in db.Sys_Menus
+                        join rm in db.Sys_Role_Menu on menu.ID equals rm.MenuID
+                        join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
+                        where ac.AccountName == userName && menu .SystemID==systemId&& rm.IsEnable != true
+                        select menu;
+            return query == null ? null : new List<Sys_Menus>(query);
+        }
+        /// <summary>
+        /// 根据用户名和系统获取模块权限
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public List<Sys_Modules> GetModuleButtonsByAccount(string userName,int systemId)
         {
-            //获取所有菜单和模块信息
-            var query = from p1 in db.Systems
-                        join p2 in db.System_Menu on p1.ID equals p2.SystemID
-                        join p3 in db.Menu on p2.MenuID equals p3.ID
-                        join p4 in db.Menu_Module on p3.ID equals p4.MenuID
-                        join p5 in db.Module on p4.ModuleID equals p5.ID
-                        select new MenuModel
-                        {
-                            UserID = userId,
-                            SystemID = p1.ID,
-                            SystemName = p1.Name,
-                            SystemEnable = 0,
-                            MenuID = p3.ID,
-                            MenuName = p3.Name,
-                            MenuEnable = 0,
-                            MenuImage = p3.ImagePath,
-                            ModuleID = p5.ID,
-                            ModuleName = p5.Name,
-                            ModuleEnable = 0,
-                            DllName = p5.DllName,
-                            StartUpClass = p5.StartUpClass,
-                            Parameter = p5.Parameter,
-                            ICO = p5.ICO
-                        };
-            List<MenuModel> list = new List<MenuModel>(query);
-            int roleId = db.Account.FirstOrDefault(p => p.ID == userId).RoleID;
-            //判断系统是否启用
-            db.Role_System.Where(p => p.RoleID == roleId && p.IsEnable.Value).ToList().ForEach(mo =>
-                {
-                    list.FindAll(i => i.SystemID == mo.SystemID).ForEach(ii => ii.SystemEnable = 1);
-                });
-            //判断菜单是否启用
-            db.Role_Menu.Where(p => p.RoleID == roleId && p.IsEnable.Value).ToList().ForEach(mo =>
-                {
-                    list.FindAll(i => i.MenuID == mo.MenuID).ForEach(ii => ii.MenuEnable = 1);
-                });
-            //判断模块是否启用
-            db.Role_Module.Where(p => p.RoleID == roleId && p.IsEnable.Value).ToList().ForEach(mo =>
-                {
-                    list.FindAll(i => i.MenuID == mo.ModuleID).ForEach(ii => ii.ModuleEnable = 1);
-                });
-            return list;
-                
-
+            var query = from m in db.Sys_Modules
+                        join rm in db.Sys_Role_Module on m.ID equals rm.ModuleID
+                        join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
+                        where m.SystemID == systemId && ac.AccountName == userName && rm.IsEnable != true
+                        select m;
+            return query == null ? null : new List<Sys_Modules>(query);
         }
     }
 }

@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,6 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\TabItemInfo.cs" />
+    <Compile Include="StartUp.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MenuSettingViewModel.cs" />
+    <Compile Include="ViewModel\ModuleSettingViewModel.cs" />
+    <Compile Include="View\FrmMenuSetting.xaml.cs">
+      <DependentUpon>FrmMenuSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmModuleSetting.xaml.cs">
+      <DependentUpon>FrmModuleSetting.xaml</DependentUpon>
+    </Compile>
     <Page Include="FrmLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +85,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\FrmMenuSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmModuleSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,6 +132,10 @@
       <Project>{2b204273-c192-4341-a6f4-258e47fc881a}</Project>
       <Name>Qyz.FrameWork.Core%28核心库%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Qyz.FrameWork.Utility\Qyz.FrameWork.Utility%28实用库%29.csproj">
+      <Project>{cb91afdd-21ab-4ece-80ef-f939b5c157a0}</Project>
+      <Name>Qyz.FrameWork.Utility%28实用库%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Qyz.Model.Common\Qyz.Model.Common.csproj">
       <Project>{93dc01eb-8f42-4758-b25a-0c6ca3689638}</Project>
       <Name>Qyz.Model.Common</Name>
@@ -132,9 +157,9 @@
       <Name>Qyz.UI.Themes%28界面主题%29</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
+    <Resource Include="Image\config.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

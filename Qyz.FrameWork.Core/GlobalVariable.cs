@@ -1,6 +1,5 @@
 ﻿using Qyz.FrameWork.Core.Type;
-using Qyz.Model.Common;
-using Qyz.Model.Common.Model;
+using Qyz.Model.Common; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,10 @@ namespace Qyz.FrameWork.Core
     public class GlobalVariable
     {
         //用户信息
-        public static Account myAccount = null;
+        public static Sys_Accounts myAccount = null;
         public static SystemType systemType;
-        //用户对应的菜单信息->每个功能的按钮信息
-        public static List<MenuModel> menuModelList = new List<MenuModel>();
+        //用户对应的菜单信息,模块信息
+        public static List<Sys_Modules> modulelList = new List<Sys_Modules>();
+        public static List<Sys_Menus> menuList = new List<Sys_Menus>();
     }
 }

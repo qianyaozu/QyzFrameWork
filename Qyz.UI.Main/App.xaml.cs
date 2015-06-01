@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Qyz.UI.Main
@@ -12,6 +14,7 @@ namespace Qyz.UI.Main
     /// </summary>
     public partial class App : Application
     {
+        public delegate void LoadingDelegate();
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -28,16 +31,22 @@ namespace Qyz.UI.Main
             this.Resources.MergedDictionaries.Add(rd2);
             #endregion
 
-            MainWindow main = new MainWindow();
-            
-            FrmLogin login = new FrmLogin();
-            if (!login.ShowDialog().Value)
-            {
-                Environment.Exit(0);
-            }
-            
-            main.Show();
            
+
+            FrmLogin login = new FrmLogin();
+            login.LoginEvent += login_LoginEvent;
+            //login.Show();
+            login.ceshi();
+
+          
         }
+
+        void login_LoginEvent()
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+        }
+
+       
     }
 }

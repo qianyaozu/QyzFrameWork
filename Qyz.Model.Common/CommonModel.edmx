@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QYZ_CommonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityType Name="Account">
+    <Schema Namespace="CommonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Sys_Accounts">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -20,7 +20,7 @@
           <Property Name="Discribtion" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Menu">
+        <EntityType Name="Sys_Menus">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -30,30 +30,21 @@
           <Property Name="ImagePath" Type="varchar" MaxLength="100" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Menu_Module">
-          <Key>
-            <PropertyRef Name="MenuID" />
-            <PropertyRef Name="ModuleID" />
-          </Key>
-          <Property Name="MenuID" Type="int" Nullable="false" />
-          <Property Name="ModuleID" Type="int" Nullable="false" />
-          <Property Name="IsEnable" Type="bit" />
-        </EntityType>
-        <EntityType Name="Module">
+        <EntityType Name="Sys_Modules">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SystemID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="DllName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="StartUpClass" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Parameter" Type="varchar" MaxLength="50" />
-          <Property Name="ICO" Type="varchar" MaxLength="50" />
-          <Property Name="ICOSize" Type="varchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Role_Menu">
+        <EntityType Name="Sys_Role_Menu">
           <Key>
             <PropertyRef Name="RoleID" />
             <PropertyRef Name="MenuID" />
@@ -62,17 +53,34 @@
           <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="IsEnable" Type="bit" />
         </EntityType>
-        <EntityType Name="Role_Module">
+        <EntityType Name="Sys_Role_Module">
           <Key>
             <PropertyRef Name="RoleID" />
             <PropertyRef Name="ModuleID" />
           </Key>
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="ModuleID" Type="int" Nullable="false" />
-          <Property Name="Functions" Type="varchar" MaxLength="100" />
           <Property Name="IsEnable" Type="bit" />
+          <Property Name="AllowAdd" Type="bit" />
+          <Property Name="AllowEdit" Type="bit" />
+          <Property Name="AllowDelete" Type="bit" />
+          <Property Name="AllowSave" Type="bit" />
+          <Property Name="AllowQuery" Type="bit" />
+          <Property Name="AllowReflesh" Type="bit" />
+          <Property Name="AllowView" Type="bit" />
+          <Property Name="AllowAudit" Type="bit" />
+          <Property Name="AllowUnAudit" Type="bit" />
+          <Property Name="AllowPrint" Type="bit" />
+          <Property Name="AllowExport" Type="bit" />
+          <Property Name="AllowCustomA" Type="bit" />
+          <Property Name="AllowCustomB" Type="bit" />
+          <Property Name="AllowCustomC" Type="bit" />
+          <Property Name="AllowCustomD" Type="bit" />
+          <Property Name="AllowCustomE" Type="bit" />
+          <Property Name="AllowCustomF" Type="bit" />
+          <Property Name="AllowCustomG" Type="bit" />
         </EntityType>
-        <EntityType Name="Role_System">
+        <EntityType Name="Sys_Role_System">
           <Key>
             <PropertyRef Name="RoleID" />
             <PropertyRef Name="SystemID" />
@@ -81,7 +89,7 @@
           <Property Name="SystemID" Type="int" Nullable="false" />
           <Property Name="IsEnable" Type="bit" />
         </EntityType>
-        <EntityType Name="Roles">
+        <EntityType Name="Sys_Roles">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -89,16 +97,7 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="System_Menu">
-          <Key>
-            <PropertyRef Name="SystemID" />
-            <PropertyRef Name="MenuID" />
-          </Key>
-          <Property Name="SystemID" Type="int" Nullable="false" />
-          <Property Name="MenuID" Type="int" Nullable="false" />
-          <Property Name="IsEnable" Type="bit" />
-        </EntityType>
-        <EntityType Name="Systems">
+        <EntityType Name="Sys_Systems">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -106,35 +105,31 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Remark" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityContainer Name="QYZ_CommonModelStoreContainer">
-          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menu_Module" EntityType="Self.Menu_Module" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role_Menu" EntityType="Self.Role_Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role_Module" EntityType="Self.Role_Module" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role_System" EntityType="Self.Role_System" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="System_Menu" EntityType="Self.System_Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Systems" EntityType="Self.Systems" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="CommonModelStoreContainer">
+          <EntitySet Name="Sys_Accounts" EntityType="Self.Sys_Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Menus" EntityType="Self.Sys_Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Modules" EntityType="Self.Sys_Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Role_Menu" EntityType="Self.Sys_Role_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Role_Module" EntityType="Self.Sys_Role_Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Role_System" EntityType="Self.Sys_Role_System" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Roles" EntityType="Self.Sys_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Systems" EntityType="Self.Sys_Systems" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QYZ_CommonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="QYZ_CommonEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Account" EntityType="QYZ_CommonModel.Account" />
-          <EntitySet Name="Menu" EntityType="QYZ_CommonModel.Menu" />
-          <EntitySet Name="Menu_Module" EntityType="QYZ_CommonModel.Menu_Module" />
-          <EntitySet Name="Module" EntityType="QYZ_CommonModel.Module" />
-          <EntitySet Name="Role_Menu" EntityType="QYZ_CommonModel.Role_Menu" />
-          <EntitySet Name="Role_Module" EntityType="QYZ_CommonModel.Role_Module" />
-          <EntitySet Name="Role_System" EntityType="QYZ_CommonModel.Role_System" />
-          <EntitySet Name="Roles" EntityType="QYZ_CommonModel.Roles" />
-          <EntitySet Name="System_Menu" EntityType="QYZ_CommonModel.System_Menu" />
-          <EntitySet Name="Systems" EntityType="QYZ_CommonModel.Systems" />
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CommonModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" >
+        <EntityContainer Name="QYZEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sys_Accounts" EntityType="CommonModel.Sys_Accounts" />
+          <EntitySet Name="Sys_Menus" EntityType="CommonModel.Sys_Menus" />
+          <EntitySet Name="Sys_Modules" EntityType="CommonModel.Sys_Modules" />
+          <EntitySet Name="Sys_Role_Menu" EntityType="CommonModel.Sys_Role_Menu" />
+          <EntitySet Name="Sys_Role_Module" EntityType="CommonModel.Sys_Role_Module" />
+          <EntitySet Name="Sys_Role_System" EntityType="CommonModel.Sys_Role_System" />
+          <EntitySet Name="Sys_Roles" EntityType="CommonModel.Sys_Roles" />
+          <EntitySet Name="Sys_Systems" EntityType="CommonModel.Sys_Systems" />
         </EntityContainer>
-        <EntityType Name="Account">
+        <EntityType Name="Sys_Accounts">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -149,7 +144,7 @@
           <Property Name="Discribtion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Menu">
+        <EntityType Name="Sys_Menus">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -159,30 +154,21 @@
           <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Menu_Module">
-          <Key>
-            <PropertyRef Name="MenuID" />
-            <PropertyRef Name="ModuleID" />
-          </Key>
-          <Property Name="MenuID" Type="Int32" Nullable="false" />
-          <Property Name="ModuleID" Type="Int32" Nullable="false" />
-          <Property Name="IsEnable" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="Module">
+        <EntityType Name="Sys_Modules">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SystemID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
           <Property Name="DllName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="StartUpClass" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Parameter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ICOSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Role_Menu">
+        <EntityType Name="Sys_Role_Menu">
           <Key>
             <PropertyRef Name="RoleID" />
             <PropertyRef Name="MenuID" />
@@ -191,17 +177,34 @@
           <Property Name="MenuID" Type="Int32" Nullable="false" />
           <Property Name="IsEnable" Type="Boolean" />
         </EntityType>
-        <EntityType Name="Role_Module">
+        <EntityType Name="Sys_Role_Module">
           <Key>
             <PropertyRef Name="RoleID" />
             <PropertyRef Name="ModuleID" />
           </Key>
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <Property Name="ModuleID" Type="Int32" Nullable="false" />
-          <Property Name="Functions" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsEnable" Type="Boolean" />
+          <Property Name="AllowAdd" Type="Boolean" />
+          <Property Name="AllowEdit" Type="Boolean" />
+          <Property Name="AllowDelete" Type="Boolean" />
+          <Property Name="AllowSave" Type="Boolean" />
+          <Property Name="AllowQuery" Type="Boolean" />
+          <Property Name="AllowReflesh" Type="Boolean" />
+          <Property Name="AllowView" Type="Boolean" />
+          <Property Name="AllowAudit" Type="Boolean" />
+          <Property Name="AllowUnAudit" Type="Boolean" />
+          <Property Name="AllowPrint" Type="Boolean" />
+          <Property Name="AllowExport" Type="Boolean" />
+          <Property Name="AllowCustomA" Type="Boolean" />
+          <Property Name="AllowCustomB" Type="Boolean" />
+          <Property Name="AllowCustomC" Type="Boolean" />
+          <Property Name="AllowCustomD" Type="Boolean" />
+          <Property Name="AllowCustomE" Type="Boolean" />
+          <Property Name="AllowCustomF" Type="Boolean" />
+          <Property Name="AllowCustomG" Type="Boolean" />
         </EntityType>
-        <EntityType Name="Role_System">
+        <EntityType Name="Sys_Role_System">
           <Key>
             <PropertyRef Name="RoleID" />
             <PropertyRef Name="SystemID" />
@@ -210,7 +213,7 @@
           <Property Name="SystemID" Type="Int32" Nullable="false" />
           <Property Name="IsEnable" Type="Boolean" />
         </EntityType>
-        <EntityType Name="Roles">
+        <EntityType Name="Sys_Roles">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -218,16 +221,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="System_Menu">
-          <Key>
-            <PropertyRef Name="SystemID" />
-            <PropertyRef Name="MenuID" />
-          </Key>
-          <Property Name="SystemID" Type="Int32" Nullable="false" />
-          <Property Name="MenuID" Type="Int32" Nullable="false" />
-          <Property Name="IsEnable" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="Systems">
+        <EntityType Name="Sys_Systems">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -235,15 +229,17 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QYZ_CommonModelStoreContainer" CdmEntityContainer="QYZ_CommonEntities">
-          <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Account">
-              <MappingFragment StoreEntitySet="Account">
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="CommonModel" />
+        <Alias Key="Target" Value="CommonModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="QYZEntity" StorageEntityContainer="CommonModelStoreContainer">
+          <EntitySetMapping Name="Sys_Accounts">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Accounts">
+              <MappingFragment StoreEntitySet="Sys_Accounts">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Discribtion" ColumnName="Discribtion" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -257,9 +253,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Menu">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Menu">
-              <MappingFragment StoreEntitySet="Menu">
+          <EntitySetMapping Name="Sys_Menus">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Menus">
+              <MappingFragment StoreEntitySet="Sys_Menus">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="SystemID" ColumnName="SystemID" />
@@ -268,79 +264,78 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Menu_Module">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Menu_Module">
-              <MappingFragment StoreEntitySet="Menu_Module">
-                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
-                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Module">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Module">
-              <MappingFragment StoreEntitySet="Module">
+          <EntitySetMapping Name="Sys_Modules">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Modules">
+              <MappingFragment StoreEntitySet="Sys_Modules">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="ICOSize" ColumnName="ICOSize" />
-                <ScalarProperty Name="ICO" ColumnName="ICO" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="Parameter" ColumnName="Parameter" />
                 <ScalarProperty Name="StartUpClass" ColumnName="StartUpClass" />
                 <ScalarProperty Name="DllName" ColumnName="DllName" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
                 <ScalarProperty Name="SystemID" ColumnName="SystemID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Role_Menu">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Role_Menu">
-              <MappingFragment StoreEntitySet="Role_Menu">
+          <EntitySetMapping Name="Sys_Role_Menu">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Role_Menu">
+              <MappingFragment StoreEntitySet="Sys_Role_Menu">
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
                 <ScalarProperty Name="MenuID" ColumnName="MenuID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Role_Module">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Role_Module">
-              <MappingFragment StoreEntitySet="Role_Module">
+          <EntitySetMapping Name="Sys_Role_Module">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Role_Module">
+              <MappingFragment StoreEntitySet="Sys_Role_Module">
+                <ScalarProperty Name="AllowCustomG" ColumnName="AllowCustomG" />
+                <ScalarProperty Name="AllowCustomF" ColumnName="AllowCustomF" />
+                <ScalarProperty Name="AllowCustomE" ColumnName="AllowCustomE" />
+                <ScalarProperty Name="AllowCustomD" ColumnName="AllowCustomD" />
+                <ScalarProperty Name="AllowCustomC" ColumnName="AllowCustomC" />
+                <ScalarProperty Name="AllowCustomB" ColumnName="AllowCustomB" />
+                <ScalarProperty Name="AllowCustomA" ColumnName="AllowCustomA" />
+                <ScalarProperty Name="AllowExport" ColumnName="AllowExport" />
+                <ScalarProperty Name="AllowPrint" ColumnName="AllowPrint" />
+                <ScalarProperty Name="AllowUnAudit" ColumnName="AllowUnAudit" />
+                <ScalarProperty Name="AllowAudit" ColumnName="AllowAudit" />
+                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+                <ScalarProperty Name="AllowReflesh" ColumnName="AllowReflesh" />
+                <ScalarProperty Name="AllowQuery" ColumnName="AllowQuery" />
+                <ScalarProperty Name="AllowSave" ColumnName="AllowSave" />
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+                <ScalarProperty Name="AllowAdd" ColumnName="AllowAdd" />
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="Functions" ColumnName="Functions" />
                 <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Role_System">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Role_System">
-              <MappingFragment StoreEntitySet="Role_System">
+          <EntitySetMapping Name="Sys_Role_System">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Role_System">
+              <MappingFragment StoreEntitySet="Sys_Role_System">
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
                 <ScalarProperty Name="SystemID" ColumnName="SystemID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Roles">
-              <MappingFragment StoreEntitySet="Roles">
+          <EntitySetMapping Name="Sys_Roles">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Roles">
+              <MappingFragment StoreEntitySet="Sys_Roles">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="System_Menu">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.System_Menu">
-              <MappingFragment StoreEntitySet="System_Menu">
-                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Systems">
-            <EntityTypeMapping TypeName="QYZ_CommonModel.Systems">
-              <MappingFragment StoreEntitySet="Systems">
+          <EntitySetMapping Name="Sys_Systems">
+            <EntityTypeMapping TypeName="CommonModel.Sys_Systems">
+              <MappingFragment StoreEntitySet="Sys_Systems">
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -352,22 +347,23 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-    <Connection>
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
+    </edmx:Connection>
+    <edmx:Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
-    </Options>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
 </edmx:Edmx>

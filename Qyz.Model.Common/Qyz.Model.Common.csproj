@@ -46,80 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommonModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommonModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CommonModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CommonModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CommonModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Menu_Module.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\MenuModel.cs" />
-    <Compile Include="Module.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Model\ModulePowerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role_Menu.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role_Module.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role_System.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Systems.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="System_Menu.cs">
-      <DependentUpon>CommonModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="CommonModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CommonModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="CommonModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CommonModel.edmx</DependentUpon>
-      <LastGenOutput>CommonModel.Context.cs</LastGenOutput>
-    </None>
     <None Include="CommonModel.edmx.diagram">
       <DependentUpon>CommonModel.edmx</DependentUpon>
     </None>
-    <None Include="CommonModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CommonModel.edmx</DependentUpon>
-      <LastGenOutput>CommonModel.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Qyz.FrameWork.Core.Type\Qyz.FrameWork.Type%28类型和枚举%29.csproj">
+      <Project>{fb6b5bcb-acd4-4a04-b5bc-4f7c2fc581da}</Project>
+      <Name>Qyz.FrameWork.Type%28类型和枚举%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

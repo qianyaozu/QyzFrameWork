@@ -10,6 +10,7 @@ namespace Qyz.UI.MVVM.Command
     {
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
+       
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
@@ -17,6 +18,10 @@ namespace Qyz.UI.MVVM.Command
 
             _execute = execute;
             _canExecute = canExecute;
+        }
+        public RelayCommand(Action<object> execute)
+        {
+            _execute = execute;
         }
 
         public bool CanExecute(object parameter)

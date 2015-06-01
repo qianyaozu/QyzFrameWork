@@ -27,27 +27,48 @@ namespace Qyz.UI.Base
         void MdiControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             this.DataContext = this.VM;
-            //查找 本页面对应人员的权限，然后注册按钮
+            LoadingFrameWork();
+
+
         }
-
-
-        private void RegisterButton(string buttonName,SystemButton sysButton,bool visible)
+        /// <summary>
+        /// 根据用户权限加载界面按钮
+        /// 重写则手动注册界面按钮
+        /// </summary>
+        public virtual void LoadingFrameWork()
         {
-            object obj = this.Template.FindName(buttonName, this);
+            //查找 本页面对应人员的权限，然后注册按钮
+            RegisterButton(SystemButton.Add, true);
+        }
+      
+        /// <summary>
+        /// 手动注册按钮
+        /// </summary>
+        /// <param name="sysButton"></param>
+        public void RegisterButton(SystemButton sysButton)
+        {
+            RegisterButton(sysButton, true);
+        }
+        /// <summary>
+        /// 注册每个按钮
+        /// </summary>
+        /// <param name="buttonName"></param>
+        /// <param name="sysButton"></param>
+        /// <param name="visible"></param>
+        private void RegisterButton(SystemButton sysButton, bool visible)
+        {
+            if (!visible)
+                return;
+            object obj = this.Template.FindName(sysButton.ToString() + "Button", this);
             if (obj != null)
             {
-                Button bt = obj as Button;
-                if (!visible)
-                {
-                    bt.Visibility = System.Windows.Visibility.Collapsed;
-                    return;
-                } 
+                Button bt = obj as Button; 
+                bt.Visibility = System.Windows.Visibility.Visible; 
                 bt.CommandParameter = sysButton;
                 bt.SetBinding(Button.CommandProperty, new Binding("ActionCommand") { Source = this.DataContext });
                 bt.SetBinding(Button.ContentProperty, new Binding("Content" + sysButton.ToString()) { Source = this.DataContext });
                 bt.SetBinding(Button.IsEnabledProperty, new Binding("Allow" + sysButton.ToString()) { Source = this.DataContext });
             }
-
         }
     }
 }

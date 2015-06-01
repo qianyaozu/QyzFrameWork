@@ -4,17 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9b4da48c0cdf41cd832b9f7f01ee821a" Name="Diagram1">
-        <EntityTypeShape EntityType="QYZ_CommonModel.Account" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Menu" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Menu_Module" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Module" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Role_Menu" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Role_Module" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Role_System" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Roles" Width="1.5" PointX="6.75" PointY="3.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.System_Menu" Width="1.5" PointX="6.75" PointY="6.75" />
-        <EntityTypeShape EntityType="QYZ_CommonModel.Systems" Width="1.5" PointX="2.75" PointY="7.75" />
+      <Diagram DiagramId="46f809570de4499d9e286f03307d1975" Name="Diagram1" >
+        <EntityTypeShape EntityType="CommonModel.Sys_Accounts" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Menus" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Modules" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Role_Menu" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Role_Module" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Role_System" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Roles" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CommonModel.Sys_Systems" Width="1.5" PointX="6.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
