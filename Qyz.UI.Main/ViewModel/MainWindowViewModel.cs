@@ -16,19 +16,15 @@ namespace Qyz.UI.Main.ViewModel
 {
     public class MainWindowViewModel : PropertyChangedBase
     {
-        #region 字段
-        private ObservableCollection<Sys_Menus> _menuList = new ObservableCollection<Sys_Menus>();
-        private ObservableCollection<Sys_Modules> _moduleList = new ObservableCollection<Sys_Modules>();
-
+        #region 字段 
+        private ObservableCollection<Sys_Modules> _moduleList = new ObservableCollection<Sys_Modules>(); //模块集合
       
-        private static ObservableCollection<TabItemInfo> _tabItemsList = new ObservableCollection<TabItemInfo>();
-        private Sys_Modules _SelectSecMenu;
-        private Sys_Menus _SelectMenu;
-        private int _SelectMdiIndex;
-
-       
+        private static ObservableCollection<TabItemInfo> _tabItemsList = new ObservableCollection<TabItemInfo>();//标签集合
+        private Sys_Modules _SelectSecMenu;//选中二级目录
+        private Sys_Menus _SelectMenu;//选中目录
+        private int _SelectMdiIndex;//选中标签页索引
       
-        private string _userName;
+        private string _userName;//登录的用户名
         #endregion
 
         #region CLR属性
@@ -66,6 +62,9 @@ namespace Qyz.UI.Main.ViewModel
             get { return _SelectSecMenu; }
             set { _SelectSecMenu = value; RaisePropertyChanged("SelectSecMenu"); }
         }
+        /// <summary>
+        /// 选中的一级菜单
+        /// </summary>
         public Sys_Menus SelectMenu
         {
             get { return _SelectMenu; }
@@ -79,15 +78,15 @@ namespace Qyz.UI.Main.ViewModel
             }
         }
         /// <summary>
-        /// 一级菜单
+        /// 菜单集合
         /// </summary>
         public ObservableCollection<Sys_Menus> MenuList
         {
-            get { return _menuList; }
-            set { _menuList = value; }
+            get { return GlobalVariable.menuList; }
+            set { GlobalVariable.menuList = value; }
         }
         /// <summary>
-        /// 二级菜单
+        /// 模块集合
         /// </summary>
         public ObservableCollection<Sys_Modules> ModuleList
         {
@@ -102,8 +101,7 @@ namespace Qyz.UI.Main.ViewModel
         {
             if (GlobalVariable.myAccount == null)
                 return;
-            UserName = GlobalVariable.myAccount.UserName;
-            GlobalVariable.menuList.ForEach(p => MenuList.Add(p));
+            UserName = GlobalVariable.myAccount.UserName; 
             if (MenuList.Count > 0) SelectMenu = MenuList.First(); 
            
         }

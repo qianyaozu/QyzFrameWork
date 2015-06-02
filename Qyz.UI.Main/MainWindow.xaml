@@ -126,12 +126,37 @@
                             </StackPanel>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
+                    <!--<ListView.ItemTemplate>
                         <DataTemplate>
                             <Button Content="{Binding Name}"    Command="{Binding DataContext.OpenModuleCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" CommandParameter="{Binding}" />
                         </DataTemplate>
-                    </ListView.ItemTemplate>
- 
+                    </ListView.ItemTemplate>-->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <Border Name="BD_Collector" CornerRadius="5" Background="DarkSeaGreen" Width="auto" Height="30" Margin="5">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                    <i:InvokeCommandAction Command="{Binding DataContext.OpenModuleCommand,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" CommandParameter="{Binding}"></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                            <Label Content="{Binding Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="13" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="BD_Collector" Property="Background" Value="YellowGreen" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="BD_Collector" Property="Background" Value="DarkGreen" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
             </ScrollViewer>
             <Button Content="btnLeft" x:Name="btnLeft" Grid.Column="2" Grid.Row="1" FocusVisualStyle="{x:Null}" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Center" Height="311.052" Cursor="Hand" Click="btnLeft_Click"/>

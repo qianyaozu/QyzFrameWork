@@ -36,9 +36,9 @@ namespace Qyz.BLL.Core
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        public List<Sys_Menus> GetMenuByAccount(string userName, int systemId)
+        public List<Sys_Menus> GetMenuByAccount(Sys_Accounts account, int systemId)
         {
-            return dal.GetMenuByAccount(userName, systemId);
+            return dal.GetMenuByAccount(account, systemId);
         }
         /// <summary>
         /// 根据账号和系统类别获取模块及权限
@@ -46,9 +46,9 @@ namespace Qyz.BLL.Core
         /// <param name="userName"></param>
         /// <param name="systemId"></param>
         /// <returns></returns>
-        public List<Sys_Modules> GetModuleButtonsByAccount(string userName, int systemId)
+        public List<Sys_Modules> GetModuleButtonsByAccount(Sys_Accounts account, int systemId)
         {
-            return dal.GetModuleButtonsByAccount(userName, systemId);
+            return dal.GetModuleButtonsByAccount(account, systemId);
         }
 
         public bool InsertUser(Sys_Accounts account)

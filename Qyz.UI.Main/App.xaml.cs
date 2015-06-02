@@ -35,8 +35,8 @@ namespace Qyz.UI.Main
 
             FrmLogin login = new FrmLogin();
             login.LoginEvent += login_LoginEvent;
-            //login.Show();
-            login.ceshi();
+            login.Show();
+            //login.ceshi();
 
           
         }

@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuInfoDAL.cs" />
+    <Compile Include="SystemInfoDAL.cs" />
     <Compile Include="UserInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

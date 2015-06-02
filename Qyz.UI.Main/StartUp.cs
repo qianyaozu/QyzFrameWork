@@ -8,13 +8,14 @@ using System.Text;
 namespace Qyz.UI.Main
 {
     public class StartUp:IStartUp
-    { 
-        public System.Windows.Controls.UserControl MainControl( string uParameter)
+    {
+        public System.Windows.Controls.UserControl MainControl(string uParameter)
         {
             if (uParameter.Equals("1"))
-            {
                 return new FrmMenuSetting();
-            }
+            if (uParameter.Equals("2"))
+                return new FrmMenuSetting();
+
             return null;
         }
     }

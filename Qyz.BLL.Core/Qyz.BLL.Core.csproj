@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuInfoBLL.cs" />
+    <Compile Include="SystemInfoBLL.cs" />
     <Compile Include="UserInfoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,14 +12,20 @@ namespace Qyz.FrameWork.Utility
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value.ToString() != "")
+            string imagePath = string.Empty;
+            if (value == null || value.ToString() == "")
             {
-                string path = Environment.CurrentDirectory + "/Image/" + value.ToString();
-                if (File.Exists(path))
-                {
-                    FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-                    return BitmapFrame.Create(fs);
-                }
+                imagePath = "config.png";
+            }
+            else
+            {
+                imagePath = value.ToString();
+            }
+            string path = Environment.CurrentDirectory + "/Image/" + imagePath;
+            if (File.Exists(path))
+            {
+                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+                return BitmapFrame.Create(fs);
             }
             return null;
         }

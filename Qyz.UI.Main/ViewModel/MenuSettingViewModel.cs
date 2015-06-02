@@ -1,5 +1,8 @@
-﻿using Qyz.FrameWork.Core;
+﻿using Qyz.BLL.Core;
+using Qyz.FrameWork.Core;
 using Qyz.Model.Common;
+using Qyz.UI.Controls;
+using Qyz.UI.Main.View;
 using Qyz.UI.MVVM;
 using System;
 using System.Collections.Generic;
@@ -14,18 +17,17 @@ namespace Qyz.UI.Main.ViewModel
 
         public MenuSettingViewModel()
         {
-            GlobalVariable.menuList.ForEach(p => MenuList.Add(p));
+            
             InitButtonState();
         }
-        #region 绑定的属性
-        private ObservableCollection<Sys_Menus> _menuList = new ObservableCollection<Sys_Menus>();
+        #region 绑定的属性 
         /// <summary>
         /// 菜单列表
         /// </summary>
         public ObservableCollection<Sys_Menus> MenuList
         {
-            get { return _menuList; }
-            set { _menuList = value; }
+            get { return GlobalVariable.menuList; }
+            set { GlobalVariable.menuList = value; }
         }
 
         private Sys_Menus _SelectedMenu;
@@ -53,24 +55,70 @@ namespace Qyz.UI.Main.ViewModel
         #endregion
 
         #region 命令
+        /// <summary>
+        /// 新增命令
+        /// </summary>
+        /// <returns></returns>
         public override bool ExecuteAdd()
         {
-            return base.ExecuteAdd();
-        }
+            Sys_Menus menu = new Sys_Menus();
+            menu.ID = MenuList.Max(p => p.ID) + 1;
+            menu.SystemID = (int)GlobalVariable.systemType;
+            FrmMenuSettingEdit edit = new FrmMenuSettingEdit(menu);
+            edit.SaveEvent += (m) =>
+            {
+                MenuList.Add(m);
+            };
+            edit.ShowDialog();
 
+            return true;
+        }
+        /// <summary>
+        /// 修改命令
+        /// </summary>
+        /// <returns></returns>
         public override bool ExecuteEdit()
         {
             if (SelectedMenu != null)
             {
+                Sys_Menus menu = new Sys_Menus();
+                menu.ID = SelectedMenu.ID;
+                menu.Name = SelectedMenu.Name;
+                menu.ImagePath = SelectedMenu.ImagePath;
+                menu.SystemID = SelectedMenu.SystemID;
+                menu.Remark = SelectedMenu.Remark;
 
+
+                FrmMenuSettingEdit edit = new FrmMenuSettingEdit(menu);
+                edit.SaveEvent += (m) =>
+                {
+                    MenuList[MenuList.IndexOf(SelectedMenu)] = m;
+                    SelectedMenu = m;
+                };
+                edit.ShowDialog();
             }
             return true;
         }
+        /// <summary>
+        /// 删除命令
+        /// </summary>
+        /// <returns></returns>
         public override bool ExecuteDelete()
         {
             if (SelectedMenu != null)
             {
-
+                if(SelectedMenu.SystemID==-1)
+                {
+                    MessageBoxEx.Show("系统设置菜单不可删除","提示", MessageBoxButtonType.OK);
+                    return false;
+                }
+                MenuInfoBLL bll = new MenuInfoBLL();
+               if( bll.DeleteMenuInfo(SelectedMenu))
+               {
+                   GlobalVariable.menuList.Remove(SelectedMenu);
+                   SelectedMenu = null;
+               }
+                
             }
             return true;
         }

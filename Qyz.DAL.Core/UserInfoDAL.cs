@@ -34,7 +34,7 @@ namespace Qyz.DAL.Core
         {
             if (account != null && account.UserName != "" && account.PassWord != "")
             {
-                db.AddToSys_Accounts(account);
+                db.Sys_Accounts.AddObject(account);
                 db.SaveChanges();
                 return true;
             }
@@ -50,7 +50,7 @@ namespace Qyz.DAL.Core
             Sys_Accounts acc = ExistsUser(account);
             if (acc != null)
             {
-                acc = account; 
+                acc = account;
                 db.SaveChanges();
                 return true;
             }
@@ -64,12 +64,12 @@ namespace Qyz.DAL.Core
         /// <returns></returns>
         public Sys_Accounts ExistsUser(Sys_Accounts account)
         {
-             var query = from ac in db.Sys_Accounts
-                        where ac.AccountName == account.UserName 
+            var query = from ac in db.Sys_Accounts
+                        where ac.AccountName == account.UserName
                         select ac;
-             if (query != null && query.ToList().Count > 0)
-                 return query.ToList<Sys_Accounts>().FirstOrDefault();
-             return null;
+            if (query != null && query.ToList().Count > 0)
+                return query.ToList<Sys_Accounts>().FirstOrDefault();
+            return null;
         }
 
         /// <summary>
@@ -82,38 +82,63 @@ namespace Qyz.DAL.Core
             var query = from sys in db.Sys_Systems
                         join rs in db.Sys_Role_System on sys.ID equals rs.SystemID
                         join ac in db.Sys_Accounts on rs.RoleID equals ac.RoleID
-                        where ac.AccountName == userName && rs.IsEnable != true
+                        where ac.AccountName == userName && rs.IsEnable.Value
                         select sys;
             return query == null ? null : new List<Sys_Systems>(query);
         }
 
         /// <summary>
-        /// 根据用户名获得菜单列表
+        /// 根据用户名获得菜单列表（如果是管理员级别则显示系统设置）
         /// </summary>
         /// <param name="accountName"></param>
         /// <returns></returns>
-        public List<Sys_Menus> GetMenuByAccount(string userName,int systemId)
-        { 
-            var query = from menu in db.Sys_Menus
-                        join rm in db.Sys_Role_Menu on menu.ID equals rm.MenuID
-                        join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
-                        where ac.AccountName == userName && menu .SystemID==systemId&& rm.IsEnable != true
-                        select menu;
-            return query == null ? null : new List<Sys_Menus>(query);
+        public List<Sys_Menus> GetMenuByAccount(Sys_Accounts account, int systemId)
+        {
+
+            if (account.RoleID < 2)//管理员
+            {
+                var query = (from menu in db.Sys_Menus
+                             where menu.SystemID == systemId
+                             select menu).Union(from p in db.Sys_Menus
+                                                where p.SystemID == -1
+                                                select p);
+                return new List<Sys_Menus>(query);
+            }
+            else//用户
+            {
+                var query = (from menu in db.Sys_Menus
+                             join rm in db.Sys_Role_Menu on menu.ID equals rm.MenuID
+                             join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
+                             where ac.AccountName == account.AccountName && menu.SystemID == systemId && rm.IsEnable.Value
+                             select menu);
+                return new List<Sys_Menus>(query);
+            }
         }
         /// <summary>
         /// 根据用户名和系统获取模块权限
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public List<Sys_Modules> GetModuleButtonsByAccount(string userName,int systemId)
+        public List<Sys_Modules> GetModuleButtonsByAccount(Sys_Accounts account, int systemId)
         {
-            var query = from m in db.Sys_Modules
-                        join rm in db.Sys_Role_Module on m.ID equals rm.ModuleID
-                        join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
-                        where m.SystemID == systemId && ac.AccountName == userName && rm.IsEnable != true
-                        select m;
-            return query == null ? null : new List<Sys_Modules>(query);
+            if (account.RoleID < 2)//管理员
+            {
+                var query = (from m in db.Sys_Modules
+                             where m.SystemID == systemId
+                             select m).Union(from m in db.Sys_Modules
+                                             where m.SystemID == -1
+                                             select m);
+                return new List<Sys_Modules>(query);
+            }
+            else//普通用户
+            {
+                var query = (from m in db.Sys_Modules
+                             join rm in db.Sys_Role_Module on m.ID equals rm.ModuleID
+                             join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
+                             where m.SystemID == systemId && ac.AccountName == account.AccountName && rm.IsEnable.Value
+                             select m);
+                return new List<Sys_Modules>(query);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="46f809570de4499d9e286f03307d1975" Name="Diagram1" >
+      <Diagram DiagramId="1d2d396e51514607b00547c01572e7e8" Name="Diagram1" >
         <EntityTypeShape EntityType="CommonModel.Sys_Accounts" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="CommonModel.Sys_Menus" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="CommonModel.Sys_Modules" Width="1.5" PointX="2.75" PointY="3.75" />

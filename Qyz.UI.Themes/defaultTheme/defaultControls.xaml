@@ -4,6 +4,13 @@
                      xmlns:ee="http://schemas.microsoft.com/expression/2010/effects"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+    
+    
     <Style x:Key="TitleTextStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>

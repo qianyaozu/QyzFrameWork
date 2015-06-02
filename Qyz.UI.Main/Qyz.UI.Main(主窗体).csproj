@@ -63,6 +63,9 @@
     <Compile Include="View\FrmMenuSetting.xaml.cs">
       <DependentUpon>FrmMenuSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmMenuSettingEdit.xaml.cs">
+      <DependentUpon>FrmMenuSettingEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmModuleSetting.xaml.cs">
       <DependentUpon>FrmModuleSetting.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\FrmMenuSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmMenuSettingEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

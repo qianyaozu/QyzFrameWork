@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindList.cs" />
-    <Compile Include="Converter\ImageConverter.cs" />
     <Compile Include="EFHelper.cs" />
     <Compile Include="ImageConverter.cs" />
     <Compile Include="ImageOperate\ImageCompress.cs" />
@@ -99,6 +98,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Converter\" />
     <Folder Include="Interface\" />
   </ItemGroup>
   <PropertyGroup>

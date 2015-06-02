@@ -15,6 +15,6 @@ namespace Qyz.FrameWork.Core.Type
         /// <summary>
         /// 固定资产系统
         /// </summary>
-        Assets = 0
+        Assets = 1
     }
 }
