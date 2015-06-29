@@ -18,15 +18,14 @@ using System.Windows.Shapes;
 namespace Qyz.UI.Main.View
 {
     /// <summary>
-    /// FrmModuleSetting.xaml 的交互逻辑
+    /// FrmSystemSetting.xaml 的交互逻辑
     /// </summary>
-    public partial class FrmModuleSetting : MdiControl
+    public partial class FrmSystemSetting : MdiControl
     {
-        ModuleSettingViewModel viewModel;
-        public FrmModuleSetting(string menuID)
+        SystemSettingViewModel viewModel = new SystemSettingViewModel();
+        public FrmSystemSetting()
         {
             InitializeComponent();
-            viewModel = new ModuleSettingViewModel(menuID);
         }
         protected override MVVM.ViewModelBase VM
         {
@@ -34,7 +33,7 @@ namespace Qyz.UI.Main.View
             {
                 return viewModel;
             }
-            
+
         }
         public override void LoadingFrameWork()
         {

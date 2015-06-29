@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace Qyz.FrameWork.Utility
+namespace Qyz.UI.Main
 {
     public class ImageConverter : IValueConverter
     {

@@ -8,8 +8,7 @@ using System.Text;
 namespace Qyz.BLL.Core
 {
     public class SystemInfoBLL
-    {
-        
+    { 
         /// <summary>
         /// 获得系统集合
         /// </summary>

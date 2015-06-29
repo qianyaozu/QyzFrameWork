@@ -55,11 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\ImageConverter.cs" />
+    <Compile Include="Converter\MenuNameConverter.cs" />
     <Compile Include="Model\TabItemInfo.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MenuSettingViewModel.cs" />
     <Compile Include="ViewModel\ModuleSettingViewModel.cs" />
+    <Compile Include="ViewModel\SystemSettingViewModel.cs" />
     <Compile Include="View\FrmMenuSetting.xaml.cs">
       <DependentUpon>FrmMenuSetting.xaml</DependentUpon>
     </Compile>
@@ -68,6 +71,15 @@
     </Compile>
     <Compile Include="View\FrmModuleSetting.xaml.cs">
       <DependentUpon>FrmModuleSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmModuleSettingEdit.xaml.cs">
+      <DependentUpon>FrmModuleSettingEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmSystemSetting.xaml.cs">
+      <DependentUpon>FrmSystemSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmSystemSettingEdit.xaml.cs">
+      <DependentUpon>FrmSystemSettingEdit.xaml</DependentUpon>
     </Compile>
     <Page Include="FrmLogin.xaml">
       <SubType>Designer</SubType>
@@ -97,6 +109,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FrmModuleSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmModuleSettingEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmSystemSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmSystemSettingEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

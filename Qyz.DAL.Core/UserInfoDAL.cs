@@ -124,18 +124,21 @@ namespace Qyz.DAL.Core
             if (account.RoleID < 2)//管理员
             {
                 var query = (from m in db.Sys_Modules
-                             where m.SystemID == systemId
+                             join menu in db.Sys_Menus on m.MenuID equals menu.ID
+                             where menu.SystemID == systemId
                              select m).Union(from m in db.Sys_Modules
-                                             where m.SystemID == -1
+                                             join menu in db.Sys_Menus on m.MenuID equals menu.ID
+                                             where menu.SystemID == -1
                                              select m);
                 return new List<Sys_Modules>(query);
             }
             else//普通用户
             {
                 var query = (from m in db.Sys_Modules
+                             join menu in db.Sys_Menus on m.MenuID equals menu.ID
                              join rm in db.Sys_Role_Module on m.ID equals rm.ModuleID
                              join ac in db.Sys_Accounts on rm.RoleID equals ac.RoleID
-                             where m.SystemID == systemId && ac.AccountName == account.AccountName && rm.IsEnable.Value
+                             where menu.SystemID == systemId && ac.AccountName == account.AccountName && rm.IsEnable.Value
                              select m);
                 return new List<Sys_Modules>(query);
             }

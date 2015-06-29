@@ -144,5 +144,21 @@ namespace Qyz.FrameWork.Core
             }
             return dic;
         }
+
+        /// <summary>
+        /// 根据程序集名称获得该程序集中的所有类型
+        /// </summary>
+        /// <param name="dllName"></param>
+        /// <returns></returns>
+        public static List<System.Type> GetClassName(string dllName)
+        {
+            List<System.Type> list = new List<System.Type>();
+            if (!dllName.Contains(':'))
+                dllName = AppDomain.CurrentDomain.BaseDirectory + dllName;
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(dllName);
+            foreach (System.Type type in assembly.GetExportedTypes())
+                list.Add(type);
+            return list;
+        }
     }
 }

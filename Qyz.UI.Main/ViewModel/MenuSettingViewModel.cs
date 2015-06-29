@@ -14,20 +14,23 @@ namespace Qyz.UI.Main.ViewModel
 {
     public class MenuSettingViewModel : ViewModelBase
     {
-
+        #region 构造函数
         public MenuSettingViewModel()
-        {
-            
+        { 
             InitButtonState();
+            new MenuInfoBLL().GetMenuInfo((int)GlobalVariable.systemType).ForEach(p => MenuList.Add(p));
         }
-        #region 绑定的属性 
+        #endregion
+
+        #region 绑定的属性
+        private ObservableCollection<Sys_Menus> _MenuList=new ObservableCollection<Sys_Menus>();
         /// <summary>
         /// 菜单列表
         /// </summary>
         public ObservableCollection<Sys_Menus> MenuList
         {
-            get { return GlobalVariable.menuList; }
-            set { GlobalVariable.menuList = value; }
+            get { return _MenuList; }
+            set { _MenuList = value; }
         }
 
         private Sys_Menus _SelectedMenu;
@@ -68,6 +71,7 @@ namespace Qyz.UI.Main.ViewModel
             edit.SaveEvent += (m) =>
             {
                 MenuList.Add(m);
+                GlobalVariable.RefleshMenuInfo();
             };
             edit.ShowDialog();
 
@@ -94,6 +98,7 @@ namespace Qyz.UI.Main.ViewModel
                 {
                     MenuList[MenuList.IndexOf(SelectedMenu)] = m;
                     SelectedMenu = m;
+                    GlobalVariable.RefleshMenuInfo();
                 };
                 edit.ShowDialog();
             }
@@ -107,18 +112,19 @@ namespace Qyz.UI.Main.ViewModel
         {
             if (SelectedMenu != null)
             {
-                if(SelectedMenu.SystemID==-1)
+                if (SelectedMenu.SystemID == -1)
                 {
-                    MessageBoxEx.Show("系统设置菜单不可删除","提示", MessageBoxButtonType.OK);
+                    MessageBoxEx.Show("系统设置菜单不可删除", "提示", MessageBoxButtonType.OK);
                     return false;
                 }
                 MenuInfoBLL bll = new MenuInfoBLL();
-               if( bll.DeleteMenuInfo(SelectedMenu))
-               {
-                   GlobalVariable.menuList.Remove(SelectedMenu);
-                   SelectedMenu = null;
-               }
-                
+                if (bll.DeleteMenuInfo(SelectedMenu))
+                {
+                    MenuList.Remove(SelectedMenu);
+                    SelectedMenu = null;
+                    GlobalVariable.RefleshMenuInfo();
+                }
+
             }
             return true;
         }

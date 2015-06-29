@@ -720,16 +720,14 @@ namespace Qyz.Model.Common
         /// </summary>
         /// <param name="id">ID 属性的初始值。</param>
         /// <param name="name">Name 属性的初始值。</param>
-        /// <param name="systemID">SystemID 属性的初始值。</param>
         /// <param name="menuID">MenuID 属性的初始值。</param>
         /// <param name="dllName">DllName 属性的初始值。</param>
         /// <param name="startUpClass">StartUpClass 属性的初始值。</param>
-        public static Sys_Modules CreateSys_Modules(global::System.Int32 id, global::System.String name, global::System.Int32 systemID, global::System.Int32 menuID, global::System.String dllName, global::System.String startUpClass)
+        public static Sys_Modules CreateSys_Modules(global::System.Int32 id, global::System.String name, global::System.Int32 menuID, global::System.String dllName, global::System.String startUpClass)
         {
             Sys_Modules sys_Modules = new Sys_Modules();
             sys_Modules.ID = id;
             sys_Modules.Name = name;
-            sys_Modules.SystemID = systemID;
             sys_Modules.MenuID = menuID;
             sys_Modules.DllName = dllName;
             sys_Modules.StartUpClass = startUpClass;
@@ -790,30 +788,6 @@ namespace Qyz.Model.Common
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SystemID
-        {
-            get
-            {
-                return _SystemID;
-            }
-            set
-            {
-                OnSystemIDChanging(value);
-                ReportPropertyChanging("SystemID");
-                _SystemID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SystemID");
-                OnSystemIDChanged();
-            }
-        }
-        private global::System.Int32 _SystemID;
-        partial void OnSystemIDChanging(global::System.Int32 value);
-        partial void OnSystemIDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。

@@ -36,7 +36,6 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SystemID" Type="int" Nullable="false" />
           <Property Name="MenuID" Type="int" Nullable="false" />
           <Property Name="DllName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="StartUpClass" Type="varchar" MaxLength="100" Nullable="false" />
@@ -160,7 +159,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SystemID" Type="Int32" Nullable="false" />
           <Property Name="MenuID" Type="Int32" Nullable="false" />
           <Property Name="DllName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="StartUpClass" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -273,7 +271,6 @@
                 <ScalarProperty Name="StartUpClass" ColumnName="StartUpClass" />
                 <ScalarProperty Name="DllName" ColumnName="DllName" />
                 <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

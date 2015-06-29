@@ -551,7 +551,7 @@
     <Style TargetType="DataGrid">
         <!--网格线颜色-->
         <Setter Property="CanUserResizeColumns" Value="True"/>
-        <Setter Property="Background" Value="#E6DBBB" />
+        <Setter Property="Background" Value="#EDF2F8" />
         <Setter Property="BorderBrush" Value="WhiteSmoke" />
         <Setter Property="HorizontalGridLinesBrush">
             <Setter.Value>

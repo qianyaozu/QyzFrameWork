@@ -5,8 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:base="clr-namespace:Qyz.UI.Base;assembly=Qyz.UI.Base"
+             xmlns:converter="clr-namespace:Qyz.UI.Main"
              d:DesignHeight="300" d:DesignWidth="300">
+    <base:MdiControl.Resources>
+        <converter:MenuNameConverter x:Key="menuconverter"></converter:MenuNameConverter>
+    </base:MdiControl.Resources>
     <Grid>
-        <TextBlock Text="11111"></TextBlock>
+        <DataGrid CanUserAddRows="False" SelectedItem="{Binding SelectedModule,Mode=TwoWay}" ItemsSource="{Binding ModuleList,Mode=TwoWay}" AutoGenerateColumns="False" AlternationCount="2" 
+                  RowHeaderWidth="0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="编号"  Binding="{Binding ID}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="模块名称"  Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="所属菜单" Binding="{Binding MenuID,Converter={StaticResource menuconverter}}"  Width="*"> </DataGridTextColumn>
+                <DataGridTextColumn Header="程序集名称"  Binding="{Binding DllName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="启动类库"  Binding="{Binding StartUpClass}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="启动参数"  Binding="{Binding Parameter}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="备注"  Binding="{Binding Remark}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </base:MdiControl>

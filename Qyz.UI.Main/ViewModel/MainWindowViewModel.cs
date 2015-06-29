@@ -77,13 +77,14 @@ namespace Qyz.UI.Main.ViewModel
                 RaisePropertyChanged("SelectMenu");
             }
         }
+        private ObservableCollection<Sys_Menus> _MenuList=new ObservableCollection<Sys_Menus>();
         /// <summary>
         /// 菜单集合
         /// </summary>
         public ObservableCollection<Sys_Menus> MenuList
         {
-            get { return GlobalVariable.menuList; }
-            set { GlobalVariable.menuList = value; }
+            get { return _MenuList; }
+            set { _MenuList = value; }
         }
         /// <summary>
         /// 模块集合
@@ -101,7 +102,8 @@ namespace Qyz.UI.Main.ViewModel
         {
             if (GlobalVariable.myAccount == null)
                 return;
-            UserName = GlobalVariable.myAccount.UserName; 
+            UserName = GlobalVariable.myAccount.UserName;
+            GlobalVariable.menuList.ForEach(p => MenuList.Add(p));
             if (MenuList.Count > 0) SelectMenu = MenuList.First(); 
            
         }
@@ -126,8 +128,8 @@ namespace Qyz.UI.Main.ViewModel
                                 return;
                             }
                         }
-
-                        object[] obs = mo.Parameter.Split(',');
+                        string para = mo.Parameter + "," + mo.MenuID;//启动参数+菜单编号 传递参数
+                        object[] obs = para.Split(','); 
                         object ob = ReflectFunction.RunReflectMethod(mo.DllName, mo.StartUpClass, "MainControl", false, obs);
                         if (ob == null)
                             return;
