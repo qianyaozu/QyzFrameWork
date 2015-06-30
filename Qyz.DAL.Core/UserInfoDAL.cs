@@ -9,14 +9,16 @@ namespace Qyz.DAL.Core
     public class UserInfoDAL
     {
         QYZEntity db = new QYZEntity();
+
+        #region 用户信息
         /// <summary>
         ///  获取用户信息
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="passWord"></param>
         /// <returns></returns>
-        public Sys_Accounts GetUserInfo(string userName, string passWord)
-        {
+        public Sys_Accounts GetAccountInfo(string userName, string passWord)
+        { 
             var query = from ac in db.Sys_Accounts
                         where ac.AccountName == userName && ac.PassWord == passWord
                         select ac;
@@ -25,12 +27,21 @@ namespace Qyz.DAL.Core
             return null;
 
         }
+        public List<Sys_Accounts> GetAccountInfo()
+        {
+            var query = from ac in db.Sys_Accounts 
+                        select ac;
+            if (query != null && query.ToList().Count > 0)
+                return query.ToList<Sys_Accounts>();
+            return null;
+
+        }
         /// <summary>
         /// 新增账户
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        public bool InsertUser(Sys_Accounts account)
+        public bool InsertAccount(Sys_Accounts account)
         {
             if (account != null && account.UserName != "" && account.PassWord != "")
             {
@@ -41,13 +52,37 @@ namespace Qyz.DAL.Core
             return false;
         }
         /// <summary>
+        /// 删除账号信息
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool DeleteAccount(Sys_Accounts account)
+        {
+            db.Sys_Accounts.DeleteObject(account);
+            db.SaveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// 获取账户最大ID
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxAccountID()
+        {
+            var query = db.Sys_Accounts.Max(p => p.ID);
+
+            if (query != null)
+                return Convert.ToInt32(query);
+            return 1;
+        }
+        /// <summary>
         /// 更新账户
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        public bool UpdateUser(Sys_Accounts account)
+        public bool UpdateAccount(Sys_Accounts account)
         {
-            Sys_Accounts acc = ExistsUser(account);
+            Sys_Accounts acc = ExistsAccount(account);
             if (acc != null)
             {
                 acc = account;
@@ -62,7 +97,7 @@ namespace Qyz.DAL.Core
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        public Sys_Accounts ExistsUser(Sys_Accounts account)
+        public Sys_Accounts ExistsAccount(Sys_Accounts account)
         {
             var query = from ac in db.Sys_Accounts
                         where ac.AccountName == account.UserName
@@ -143,5 +178,84 @@ namespace Qyz.DAL.Core
                 return new List<Sys_Modules>(query);
             }
         }
+        #endregion
+
+        #region 角色信息
+        /// <summary>
+        /// 查询角色信息
+        /// </summary>
+        /// <returns></returns>
+        public List<Sys_Roles> GetRoleInfo()
+        {
+            var query = from ac in db.Sys_Roles 
+                        select ac;
+            if (query != null && query.ToList().Count > 0)
+                return query.ToList<Sys_Roles>();
+            return null;
+        }
+        /// <summary>
+        /// 查询角色信息
+        /// </summary>
+        /// <returns></returns>
+        public Sys_Roles GetRoleInfo(int roleID)
+        {
+            var query = from ac in db.Sys_Roles
+                        where ac.ID == roleID
+                        select ac;
+            if (query != null && query.ToList().Count > 0)
+                return query.ToList()[0];
+            return null;
+        }
+        /// <summary>
+        /// 获取角色最大ID
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxRoleID()
+        {
+            return db.Sys_Roles.Max(p => p.ID);
+        }
+
+        /// <summary>
+        /// 删除角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool DeleteRoleInfo(Sys_Roles role)
+        {
+            Sys_Roles m = db.Sys_Roles.Where(p => p.ID == role.ID).ToList<Sys_Roles>().FirstOrDefault<Sys_Roles>();
+            db.Sys_Roles.DeleteObject(m);
+            db.SaveChanges();
+            return true;
+        }
+
+        /// <summary>
+        /// 新增角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool AddRoleInfo(Sys_Roles role)
+        {
+            if (role != null && role.Name != ""  )
+            {
+                db.Sys_Roles.AddObject(role);
+                db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// 更新角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool UpdateRoleInfo(Sys_Roles role)
+        {
+            Sys_Roles m = db.Sys_Roles.Where(p => p.ID == role.ID).ToList<Sys_Roles>().FirstOrDefault<Sys_Roles>();
+            m.Name = role.Name;
+            m.Remark = role.Remark;
+            db.SaveChanges();
+            return true;
+        }
+        #endregion
     }
 }

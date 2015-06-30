@@ -26,4 +26,25 @@ namespace Qyz.UI.Main
             throw new NotImplementedException();
         }
     }
+
+
+    public class RoleNameConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value != null)
+            {
+                Sys_Roles role = new Qyz.BLL.Core.UserInfoBLL().GetRoleInfo(System.Convert.ToInt32(value));// GlobalVariable.menuList.First(p => p.ID == System.Convert.ToInt32(value));
+                if (role != null)
+                    return role.Name;  
+            }
+            return "";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }

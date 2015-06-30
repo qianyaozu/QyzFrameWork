@@ -408,145 +408,128 @@ namespace Qyz.UI.MVVM
         /// 新增命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteAdd()
+        public virtual void ExecuteAdd()
         {
-            return true; 
+            
         }
         /// <summary>
         /// 编辑命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteEdit()
-        {
-            return true;
+        public virtual void ExecuteEdit()
+        { 
         }
         /// <summary>
         /// 删除命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteDelete()
-        {
-            return true;
+        public virtual void ExecuteDelete()
+        { 
         }
         /// <summary>
         /// 保存命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteSave()
-        {
-            return true;
+        public virtual void ExecuteSave()
+        { 
         }
         /// <summary>
         /// 查询命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteQuery()
-        {
-            return true;
+        public virtual void ExecuteQuery()
+        { 
         }
         /// <summary>
         /// 刷新命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteReflesh()
-        {
-            return true;
+        public virtual void ExecuteReflesh()
+        { 
         }
         /// <summary>
         /// 视图命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteView()
-        {
-            return true;
+        public virtual void ExecuteView()
+        { 
         }
         /// <summary>
         /// 审核命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteAudit()
-        {
-            return true;
+        public virtual void ExecuteAudit()
+        { 
         }
         /// <summary>
         /// 弃审命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteUnAudit()
-        {
-            return true;
+        public virtual void ExecuteUnAudit()
+        { 
         }
         /// <summary>
         /// 打印命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecutePrint()
-        {
-            return true;
+        public virtual void ExecutePrint()
+        { 
         }
         /// <summary>
         /// 导出命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteExport()
-        {
-            return true;
+        public virtual void ExecuteExport()
+        { 
         }
         /// <summary>
         /// 自定义A命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomA()
-        {
-            return true;
+        public virtual void ExecuteCustomA()
+        { 
         }
         /// <summary>
         /// 自定义B命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomB()
-        {
-            return true;
+        public virtual void ExecuteCustomB()
+        { 
         }
         /// <summary>
         /// 自定义C命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomC()
-        {
-            return true;
+        public virtual void ExecuteCustomC()
+        { 
         }
         /// <summary>
         /// 自定义D命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomD()
-        {
-            return true;
+        public virtual void ExecuteCustomD()
+        { 
         }
         /// <summary>
         /// 自定义E命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomE()
-        {
-            return true;
+        public virtual void ExecuteCustomE()
+        { 
         }
         /// <summary>
         /// 自定义F命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomF()
-        {
-            return true;
+        public virtual void ExecuteCustomF()
+        { 
         }
         /// <summary>
         /// 自定义G命令
         /// </summary>
         /// <returns></returns>
-        public virtual bool ExecuteCustomG()
-        {
-            return true;
+        public virtual void ExecuteCustomG()
+        { 
         }
         #endregion
 

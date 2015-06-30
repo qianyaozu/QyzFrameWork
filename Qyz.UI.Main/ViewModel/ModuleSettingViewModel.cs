@@ -26,7 +26,7 @@ namespace Qyz.UI.Main.ViewModel
         #endregion
 
         #region 绑定的属性
-        private ObservableCollection<Sys_Modules> _moduleList;
+        private ObservableCollection<Sys_Modules> _moduleList=new ObservableCollection<Sys_Modules>();
         /// <summary>
         /// 模块列表
         /// </summary>
@@ -48,7 +48,7 @@ namespace Qyz.UI.Main.ViewModel
         #endregion
 
         #region  命令
-        public override bool ExecuteAdd()
+        public override void ExecuteAdd()
         {
             Sys_Modules module = new Sys_Modules();
             module.ID = new ModuleInfoBLL().GetMaxModuleID();
@@ -58,11 +58,9 @@ namespace Qyz.UI.Main.ViewModel
             {
                 ModuleList.Add(m);
             };
-            edit.ShowDialog();
-
-            return true;
+            edit.ShowDialog(); 
         }
-        public override bool ExecuteDelete()
+        public override void ExecuteDelete()
         { 
             if (SelectedModule != null)
             { 
@@ -72,10 +70,9 @@ namespace Qyz.UI.Main.ViewModel
                     ModuleList.Remove(SelectedModule);
                     SelectedModule = null;
                 }
-            }
-            return true;
+            } 
         }
-        public override bool ExecuteEdit()
+        public override void ExecuteEdit()
         {
             if (SelectedModule != null)
             {
@@ -96,8 +93,7 @@ namespace Qyz.UI.Main.ViewModel
                     SelectedModule = m;
                 };
                 edit.ShowDialog();
-            }
-            return true;
+            } 
         }
         #endregion
 

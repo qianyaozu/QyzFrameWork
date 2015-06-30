@@ -12,16 +12,16 @@ namespace Qyz.UI.Main.ViewModel
 {
     public class SystemSettingViewModel : ViewModelBase
     {
-         #region 构造函数
+        #region 构造函数
         public SystemSettingViewModel()
-        { 
+        {
             InitButtonState();
             SystemList = new ObservableCollection<Sys_Systems>(new SystemInfoBLL().GetSystemInfo());
         }
         #endregion
 
         #region 绑定的属性
-        private ObservableCollection<Sys_Systems> _SystemList;
+        private ObservableCollection<Sys_Systems> _SystemList = new ObservableCollection<Sys_Systems>();
         /// <summary>
         /// 系统列表
         /// </summary>
@@ -60,29 +60,28 @@ namespace Qyz.UI.Main.ViewModel
         /// 新增命令
         /// </summary>
         /// <returns></returns>
-        public override bool ExecuteAdd()
+        public override void ExecuteAdd()
         {
             Sys_Systems system = new Sys_Systems();
-            system.ID = SystemList.Max(p => p.ID) + 1; 
+            system.ID = SystemList.Max(p => p.ID) + 1;
             FrmSystemSettingEdit edit = new FrmSystemSettingEdit(system);
             edit.SaveEvent += (sys) =>
             {
                 SystemList.Add(sys);
             };
-            edit.ShowDialog(); 
-            return true;
+            edit.ShowDialog();
         }
         /// <summary>
         /// 修改命令
         /// </summary>
         /// <returns></returns>
-        public override bool ExecuteEdit()
+        public override void ExecuteEdit()
         {
             if (SelectedSystem != null)
             {
                 Sys_Systems sys = new Sys_Systems();
                 sys.ID = SelectedSystem.ID;
-                sys.Name = SelectedSystem.Name; 
+                sys.Name = SelectedSystem.Name;
                 sys.Remark = SelectedSystem.Remark;
 
 
@@ -94,24 +93,22 @@ namespace Qyz.UI.Main.ViewModel
                 };
                 edit.ShowDialog();
             }
-            return true;
         }
         /// <summary>
         /// 删除命令
         /// </summary>
         /// <returns></returns>
-        public override bool ExecuteDelete()
+        public override void ExecuteDelete()
         {
             if (SelectedSystem != null)
-            { 
+            {
                 SystemInfoBLL bll = new SystemInfoBLL();
                 if (bll.DeleteSystemInfo(SelectedSystem))
                 {
                     SystemList.Remove(SelectedSystem);
                     SelectedSystem = null;
-                } 
+                }
             }
-            return true;
         }
         #endregion
     }

@@ -62,7 +62,12 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MenuSettingViewModel.cs" />
     <Compile Include="ViewModel\ModuleSettingViewModel.cs" />
+    <Compile Include="ViewModel\RoleSettingViewModel.cs" />
     <Compile Include="ViewModel\SystemSettingViewModel.cs" />
+    <Compile Include="ViewModel\AccountSettingViewModel.cs" />
+    <Compile Include="View\FrmAccountSettingEdit.xaml.cs">
+      <DependentUpon>FrmAccountSettingEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmMenuSetting.xaml.cs">
       <DependentUpon>FrmMenuSetting.xaml</DependentUpon>
     </Compile>
@@ -75,11 +80,20 @@
     <Compile Include="View\FrmModuleSettingEdit.xaml.cs">
       <DependentUpon>FrmModuleSettingEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmRoleSetting.xaml.cs">
+      <DependentUpon>FrmRoleSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmRoleSettingEdit.xaml.cs">
+      <DependentUpon>FrmRoleSettingEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmSystemSetting.xaml.cs">
       <DependentUpon>FrmSystemSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FrmSystemSettingEdit.xaml.cs">
       <DependentUpon>FrmSystemSettingEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmAccountSetting.xaml.cs">
+      <DependentUpon>FrmAccountSetting.xaml</DependentUpon>
     </Compile>
     <Page Include="FrmLogin.xaml">
       <SubType>Designer</SubType>
@@ -100,6 +114,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\FrmAccountSettingEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FrmMenuSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,11 +134,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\FrmRoleSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmRoleSettingEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FrmSystemSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FrmSystemSettingEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FrmAccountSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

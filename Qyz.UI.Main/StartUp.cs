@@ -17,6 +17,10 @@ namespace Qyz.UI.Main
                 return new FrmMenuSetting();//菜单设置
             if (para.Equals("3"))
                 return new FrmModuleSetting(menuID);//模块设置 
+            if (para.Equals("4"))
+                return new FrmAccountSetting();//账户设置 
+            if (para.Equals("5"))
+                return new FrmRoleSetting();//角色设置 
             return null;
         }
     }

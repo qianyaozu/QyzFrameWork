@@ -16,14 +16,14 @@ namespace Qyz.UI.Main.ViewModel
     {
         #region 构造函数
         public MenuSettingViewModel()
-        { 
+        {
             InitButtonState();
             new MenuInfoBLL().GetMenuInfo((int)GlobalVariable.systemType).ForEach(p => MenuList.Add(p));
         }
         #endregion
 
         #region 绑定的属性
-        private ObservableCollection<Sys_Menus> _MenuList=new ObservableCollection<Sys_Menus>();
+        private ObservableCollection<Sys_Menus> _MenuList = new ObservableCollection<Sys_Menus>();
         /// <summary>
         /// 菜单列表
         /// </summary>
@@ -62,7 +62,7 @@ namespace Qyz.UI.Main.ViewModel
         /// 新增命令
         /// </summary>
         /// <returns></returns>
-        public override bool ExecuteAdd()
+        public override void ExecuteAdd()
         {
             Sys_Menus menu = new Sys_Menus();
             menu.ID = MenuList.Max(p => p.ID) + 1;
@@ -73,15 +73,13 @@ namespace Qyz.UI.Main.ViewModel
                 MenuList.Add(m);
                 GlobalVariable.RefleshMenuInfo();
             };
-            edit.ShowDialog();
-
-            return true;
+            edit.ShowDialog(); 
         }
         /// <summary>
         /// 修改命令
         /// </summary>
         /// <returns></returns>
-        public override bool ExecuteEdit()
+        public override void ExecuteEdit()
         {
             if (SelectedMenu != null)
             {
@@ -92,7 +90,6 @@ namespace Qyz.UI.Main.ViewModel
                 menu.SystemID = SelectedMenu.SystemID;
                 menu.Remark = SelectedMenu.Remark;
 
-
                 FrmMenuSettingEdit edit = new FrmMenuSettingEdit(menu);
                 edit.SaveEvent += (m) =>
                 {
@@ -101,21 +98,20 @@ namespace Qyz.UI.Main.ViewModel
                     GlobalVariable.RefleshMenuInfo();
                 };
                 edit.ShowDialog();
-            }
-            return true;
+            } 
         }
         /// <summary>
         /// 删除命令
         /// </summary>
         /// <returns></returns>
-        public override bool ExecuteDelete()
+        public override void ExecuteDelete()
         {
             if (SelectedMenu != null)
             {
                 if (SelectedMenu.SystemID == -1)
                 {
                     MessageBoxEx.Show("系统设置菜单不可删除", "提示", MessageBoxButtonType.OK);
-                    return false;
+                    return;
                 }
                 MenuInfoBLL bll = new MenuInfoBLL();
                 if (bll.DeleteMenuInfo(SelectedMenu))
@@ -123,10 +119,8 @@ namespace Qyz.UI.Main.ViewModel
                     MenuList.Remove(SelectedMenu);
                     SelectedMenu = null;
                     GlobalVariable.RefleshMenuInfo();
-                }
-
-            }
-            return true;
+                } 
+            } 
         }
         #endregion
 

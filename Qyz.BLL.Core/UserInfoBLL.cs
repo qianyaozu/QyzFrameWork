@@ -10,18 +10,27 @@ namespace Qyz.BLL.Core
     public class UserInfoBLL
     {
         UserInfoDAL dal = new UserInfoDAL();
+        #region 用户信息
         /// <summary>
         /// 根据账号和密码进行登录
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="passWord"></param>
         /// <returns></returns>
-        public Sys_Accounts GetUserInfo(string userName, string passWord)
+        public Sys_Accounts GetAccountInfo(string userName, string passWord)
         {
-            return dal.GetUserInfo(userName, passWord);
-
+            return dal.GetAccountInfo(userName, passWord); 
         }
-        
+         /// <summary>
+        /// 根据账号和密码进行登录
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="passWord"></param>
+        /// <returns></returns>
+        public List<Sys_Accounts> GetAccountInfo()
+        {
+            return dal.GetAccountInfo();
+        }
         /// <summary>
         /// 根据账号获取系统权限
         /// </summary>
@@ -51,19 +60,105 @@ namespace Qyz.BLL.Core
             return dal.GetModuleButtonsByAccount(account, systemId);
         }
 
-        public bool InsertUser(Sys_Accounts account)
+        /// <summary>
+        /// 新增用户信息
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool InsertAccount(Sys_Accounts account)
         {
-            return dal.InsertUser(account);
+            return dal.InsertAccount(account);
+        }
+        /// <summary>
+        /// 更新用户信息
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool UpdateAccount(Sys_Accounts account)
+        {
+            return dal.UpdateAccount(account);
+
+        }
+        /// <summary>
+        /// 判断用户是否存在
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public Sys_Accounts ExistsAccount(Sys_Accounts account)
+        {
+            return dal.ExistsAccount(account);
         }
 
-        public bool UpdateUser(Sys_Accounts account)
+         /// <summary>
+        /// 删除账号信息
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public bool DeleteAccount(Sys_Accounts account)
         {
-            return dal.UpdateUser(account);
+            return dal.DeleteAccount(account);
+        }
 
-        }
-        public Sys_Accounts ExistsUser(Sys_Accounts account)
+        /// <summary>
+        /// 获取账户最大ID
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxAccountID()
         {
-            return dal.ExistsUser(account);
+            return dal.GetMaxAccountID();
         }
+        #endregion 
+
+
+
+        #region 角色信息
+        /// <summary>
+        /// 查询角色信息
+        /// </summary>
+        /// <returns></returns>
+        public List<Sys_Roles> GetRoleInfo()
+        {
+            return dal.GetRoleInfo();
+        }
+
+        public Sys_Roles GetRoleInfo(int roleID)
+        {
+            return dal.GetRoleInfo(roleID);
+        }
+         /// <summary>
+        /// 获取角色最大ID
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxRoleID()
+        {
+            return dal.GetMaxRoleID();
+        }
+        /// <summary>
+        /// 删除角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool DeleteRoleInfo(Sys_Roles role)
+        {
+            return dal.DeleteRoleInfo(role);
+        } /// <summary>
+        /// 新增角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool AddRoleInfo(Sys_Roles role)
+        {
+            return dal.AddRoleInfo(role);
+        }
+        /// <summary>
+        /// 更新角色信息
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public bool UpdateRoleInfo(Sys_Roles role)
+        {
+            return dal.UpdateRoleInfo(role);
+        }
+        #endregion
     }
 }
